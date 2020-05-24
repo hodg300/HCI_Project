@@ -4,25 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
     tools:context=".LoginActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CoronaHang"
+        android:fontFamily="sans-serif-smallcaps"
         android:textColor="@color/colorWhite"
         android:layout_above="@id/username_edit_text"
         android:textSize="50dp"
+        android:textStyle="bold"
         android:layout_centerHorizontal="true"/>
 
     <EditText
         android:id="@+id/username_edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_shape"
         android:hint="User name"
         android:inputType="text"
         android:gravity="center"
@@ -30,12 +33,15 @@
         android:textColorHint="@color/colorWhite"/>
 
     <EditText
+        android:layout_marginTop="10dp"
         android:id="@+id/password_edit_text"
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:hint="Password"
+        android:background="@drawable/edit_text_shape"
         android:inputType="textPassword"
         android:gravity="center"
         android:textColor="@color/colorWhite"
@@ -48,6 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/password_edit_text"
         android:layout_margin="30dp"
+        android:textAlignment="center"
+        style="@style/spinner_style"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"/>
 
@@ -56,16 +64,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-
+        android:fontFamily="sans-serif-smallcaps"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:width="150dp"
+        android:background="@drawable/button_shape"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/role_picker"/>
-
-
-
-
-
-
-
-
 
 </RelativeLayout>
