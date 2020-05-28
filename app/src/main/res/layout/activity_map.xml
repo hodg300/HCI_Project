@@ -13,6 +13,36 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         />
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite">
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:id="@+id/search"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/search" />
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:id="@+id/time"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@drawable/time" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
+
+
+
+
 
 
 </RelativeLayout>
