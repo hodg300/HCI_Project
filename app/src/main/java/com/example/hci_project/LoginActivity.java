@@ -1,11 +1,10 @@
 package com.example.hci_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
@@ -26,8 +25,26 @@ public class LoginActivity extends Activity {
         changeBackgroundImage();
         setIds();
         setSpinner();
+        setOnClickListeners();
 
 
+    }
+
+    private void setOnClickListeners() {
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               goToMapActivity();
+            }
+        });
+
+    }
+
+    private void goToMapActivity() {
+
+        Intent intent = new Intent(this,MapActivity.class);
+        startActivity(intent);
     }
 
     @Override
