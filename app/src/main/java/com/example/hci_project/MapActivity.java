@@ -22,9 +22,8 @@ import java.util.ArrayList;
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap map;
-    private ArrayList<LatLng> locations = new ArrayList<>();
-    private ArrayList<Marker> markers = new ArrayList<>();
     private ImageView search_btn;
+    public static ArrayList<Place> places = new ArrayList<>();
 
 
     @Override
@@ -60,11 +59,22 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private void createLocations() {
 
-        locations.add(new LatLng(32.113611, 34.801954)); //aHug Hatzfoni
-        locations.add(new LatLng(32.1100635,34.843054)); //Segev Expresss
-        locations.add(new LatLng(32.0368665,34.9649833)); //Susu and Sons
-        locations.add(new LatLng(32.0938103,34.8110533)); //Tel Aviv musium
-
+        //החוג הצפוני
+        places.add(new Place("HaHoog Hatzfoni",R.drawable.ahug_hatsfoni_img,
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+                new LatLng(32.113611, 34.801954),126,false));
+        //שגב אקספרס
+        places.add(new Place("Segev Express",R.drawable.segev_express_img,
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                ,new LatLng(32.1100635,34.843054),250,true));
+        //סוסו אנד סאנס
+        places.add(new Place("Susu and Sons",R.drawable.susu_and_sons_img,
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                new LatLng(32.0368665,34.9649833),121,false));
+        //מוזיאון תל אביב
+        places.add(new Place("Tel Aviv Museum",R.drawable.tel_aviv_museum,
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                ,new LatLng(32.0938103,34.8110533),500,true));
 
     }
 
@@ -75,18 +85,18 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         googleMap.setOnMarkerClickListener(this);
 
         //aHug Hatzfoni
-        markers.add(map.addMarker(new MarkerOptions().position(locations.get(0)).title("החוג הצפוני").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+        places.get(0).setMarker(map.addMarker(new MarkerOptions().position(places.get(0).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
         //Segev Expresss
-        markers.add(map.addMarker(new MarkerOptions().position(locations.get(1)).title("שגב אקספרס")));
+        places.get(1).setMarker(map.addMarker(new MarkerOptions().position(places.get(1).getLatlng())));
         //Susu and Sons
-        markers.add(map.addMarker(new MarkerOptions().position(locations.get(2)).title("סוסו אנד סאן").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+        places.get(2).setMarker(map.addMarker(new MarkerOptions().position(places.get(2).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
         //Tel Aviv musium
-        markers.add(map.addMarker(new MarkerOptions().position(locations.get(3)).title("מוזיאון תל אביב")));
+        places.get(3).setMarker(map.addMarker(new MarkerOptions().position(places.get(3).getLatlng())));
 
 
         //Move Camera to Segev EXPRESS
-        CameraUpdate zoom=CameraUpdateFactory.zoomTo(10);
-        map.moveCamera(CameraUpdateFactory.newLatLng(locations.get(1)));
+        CameraUpdate zoom=CameraUpdateFactory.zoomTo(14);
+        map.moveCamera(CameraUpdateFactory.newLatLng(places.get(1).getLatlng()));
         map.animateCamera(zoom);
 
 
@@ -96,29 +106,27 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     public boolean onMarkerClick(Marker marker) {
 
 
-        if (markers.get(0).equals(marker)){
+        if (places.get(0).getMarker().equals(marker)){
             //החוג הצפוני
-            openRestaurantDialog(marker.getTitle(),R.drawable.ahug_hatsfoni_img,126,false);
-        } else if(markers.get(1).equals(marker)){
+            openPlaceDialog(places.get(0));
+        } else if(places.get(1).getMarker().equals(marker)){
             //שגב אקספרס
-            openRestaurantDialog(marker.getTitle(),R.drawable.segev_express_img,250,true);
-
-        } else if(markers.get(2).equals(marker)){
+            openPlaceDialog(places.get(1));
+        } else if(places.get(2).getMarker().equals(marker)){
             //סוסו אנד סאנס
-            openRestaurantDialog(marker.getTitle(),R.drawable.susu_and_sons_img,121,false);
+            openPlaceDialog(places.get(2));
 
-        }else if(markers.get(3).equals(marker)){
+        }else if(places.get(3).getMarker().equals(marker)){
             //מוזיאון תל אביב
-            openRestaurantDialog(marker.getTitle(),R.drawable.tel_aviv_museum,500,true);
-
+            openPlaceDialog(places.get(3));
         }
 
         return true;
     }
 
-    private void openRestaurantDialog(String nameOfRestaurant, int img, int visitors,boolean isFull){
+    private void openPlaceDialog(Place place){
 
-        PlaceDialog dialog = new PlaceDialog(nameOfRestaurant,img,visitors,isFull);
+        PlaceDialog dialog = new PlaceDialog(place);
         dialog.show(getSupportFragmentManager(),"CarPickerDialog");
     }
 }
