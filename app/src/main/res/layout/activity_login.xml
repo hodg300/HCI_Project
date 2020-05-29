@@ -68,7 +68,7 @@
         android:textStyle="bold"
         android:textColor="@color/colorBlack"
         android:width="150dp"
-        android:background="@drawable/button_shape"
+        android:background="@drawable/regular_button_shape"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/role_picker"/>
 
