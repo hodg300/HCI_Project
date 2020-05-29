@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class RestaurantDialog extends DialogFragment {
+public class PlaceDialog extends DialogFragment {
 
     private RelativeLayout restaurantContainer;
     private TextView nameOfRestaurantTV;
@@ -33,7 +33,7 @@ public class RestaurantDialog extends DialogFragment {
 
 
 
-    public RestaurantDialog(String nameOfRestaurant, int imgSrc, int numOfVisitors,boolean isFull) {
+    public PlaceDialog(String nameOfRestaurant, int imgSrc, int numOfVisitors, boolean isFull) {
 
         this.nameOfRestaurant = nameOfRestaurant;
         this.imgSrc = imgSrc;
@@ -44,7 +44,7 @@ public class RestaurantDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_restaurant,container, false);
+        View view = inflater.inflate(R.layout.dialog_place,container, false);
 
         setIds(view);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

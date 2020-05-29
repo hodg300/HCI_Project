@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HealthStatementFormActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Health Statement Form"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="30dp"/>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/title">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/HealthStatement"/>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/read_form_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/readCheckBox"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/scroll_view"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scroll_view"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"/>
+
+    <Button
+        android:id="@+id/accept_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accept"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:width="150dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/regular_button_shape_blue"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/read_form_textView"/>
+
+
+
+
+
+
+</RelativeLayout>

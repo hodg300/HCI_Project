@@ -10,12 +10,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class LoginActivity extends Activity {
 
     private static int count = 0;
     private boolean abort;
     private Button loginButton;
+    private TextView signUpTextView;
     private Spinner rolePicker;
     private int[] backgrounds = {R.drawable.background1,R.drawable.background2,R.drawable.background3};
     @Override
@@ -35,15 +39,28 @@ public class LoginActivity extends Activity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               goToMapActivity();
+                goToWaitingActivity();
+            }
+        });
+        signUpTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToSignUpActivity();
             }
         });
 
     }
 
-    private void goToMapActivity() {
 
-        Intent intent = new Intent(this,MapActivity.class);
+    private void goToWaitingActivity() {
+
+        Intent intent = new Intent(this,WaitingActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToSignUpActivity() {
+
+        Intent intent = new Intent(this,SignUpActivity.class);
         startActivity(intent);
     }
 
@@ -94,7 +111,7 @@ public class LoginActivity extends Activity {
 
     private void setSpinner() {
     //create a list of items for the spinner.
-        String[] items = new String[]{"Visiter","Place Owner","Police Officer", "Ministry of Health"};
+        String[] items = new String[]{"Visitor","Place Owner","Police Officer", "Ministry of Health"};
     //create an adapter to describe how the items are displayed, adapters are used in several places in android.
     //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -105,5 +122,6 @@ public class LoginActivity extends Activity {
 
         loginButton = findViewById(R.id.login_btn);
         rolePicker = findViewById(R.id.role_picker);
+        signUpTextView = findViewById(R.id.signUp_textView);
     }
 }
