@@ -7,4 +7,7 @@
     <color name="colorDeepPurple">#4b0082</color>
     <color name="colorPink">#E20386</color>
     <color name="colorBlack">#000000</color>
+    <color name="darkGray">#999999</color>
+    <color name="lighGreen">#46A049</color>
+    <color name="darkRed">#D1011A</color>
 </resources>
