@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -24,6 +25,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     private GoogleMap map;
     private ImageView search_btn;
     public static ArrayList<Place> places = new ArrayList<>();
+    private Button clock;
 
 
     @Override
@@ -34,7 +36,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        setId();
+        setIds();
         createLocations();
         setOnClickListeners();
     }
@@ -53,8 +55,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         startActivity(intent);
     }
 
-    private void setId() {
+    private void setIds() {
         search_btn = findViewById(R.id.search);
+        clock = findViewById(R.id.clock_btn);
     }
 
     private void createLocations() {
@@ -62,19 +65,23 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         //החוג הצפוני
         places.add(new Place("HaHoog Hatzfoni",R.drawable.ahug_hatsfoni_img,
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
-                new LatLng(32.113611, 34.801954),126,false));
+                new LatLng(32.113611, 34.801954),126,false,200,
+                "10:00 - 23:00","Students israeli bar"));
         //שגב אקספרס
         places.add(new Place("Segev Express",R.drawable.segev_express_img,
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                ,new LatLng(32.1100635,34.843054),250,true));
+                ,new LatLng(32.1100635,34.843054),250,true,250,
+                "18:00 - 04:00","Italian kitchen"));
         //סוסו אנד סאנס
         places.add(new Place("Susu and Sons",R.drawable.susu_and_sons_img,
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                new LatLng(32.0368665,34.9649833),121,false));
+                new LatLng(32.0368665,34.9649833),121,false,130,
+                "16:00 - 03:00","Texas hamburger"));
         //מוזיאון תל אביב
         places.add(new Place("Tel Aviv Museum",R.drawable.tel_aviv_museum,
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                ,new LatLng(32.0938103,34.8110533),500,true));
+                ,new LatLng(32.0938103,34.8110533),500,true,500,
+                "08:00 - 15:00","Legacy of Israel"));
 
     }
 

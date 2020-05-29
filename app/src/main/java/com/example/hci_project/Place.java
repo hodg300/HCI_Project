@@ -12,14 +12,21 @@ public class Place {
     private Marker marker;
     private int numOfVisitors;
     private boolean isFull;
+    private int maxVisitors;
+    private String openHour;
+    private String cuisines;
 
-    public Place(String name,int image,String description, LatLng latlng, int numOfVisitors,boolean isFull) {
+    public Place(String name,int image,String description, LatLng latlng, int numOfVisitors,
+                 boolean isFull,int maxVisitors,String openHour,String cuisines) {
         this.name = name;
         this.image = image;
         this.description = description;
         this.latlng = latlng;
         this.numOfVisitors = numOfVisitors;
         this.isFull = isFull;
+        this.maxVisitors = maxVisitors;
+        this.openHour= openHour;
+        this.cuisines = cuisines;
     }
 
     public String getName() {
@@ -76,5 +83,29 @@ public class Place {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getMaxVisitors() {
+        return maxVisitors;
+    }
+
+    public void setMaxVisitors(int maxVisitors) {
+        this.maxVisitors = maxVisitors;
+    }
+
+    public String getOpenHour() {
+        return openHour;
+    }
+
+    public void setOpenHour(String openHour) {
+        this.openHour = openHour;
+    }
+
+    public String getCuisines() {
+        return cuisines;
+    }
+
+    public void setCuisines(String cuisines) {
+        this.cuisines = cuisines;
     }
 }

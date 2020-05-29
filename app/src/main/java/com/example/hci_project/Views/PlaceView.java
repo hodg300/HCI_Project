@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.hci_project.Place;
 import com.example.hci_project.R;
 import com.example.hci_project.Utils.DynamicXML;
 
@@ -18,8 +20,9 @@ public class PlaceView {
     private LinearLayout card;
     private DynamicXML dynamicallyXML;
     private Context context;
+    private Place place;
 
-    public PlaceView(Context context,TextView nameOfPlace,ImageView image,TextView description){
+    public PlaceView(Context context,TextView nameOfPlace,ImageView image,TextView description,Place place){
 
         dynamicallyXML = new DynamicXML();
         this.context = context;
@@ -27,17 +30,17 @@ public class PlaceView {
         this.image = image;
         this.description = description;
         this.card = new LinearLayout(context);
-        card.setBackgroundResource(R.drawable.card_view_shape);
-
+        this.place = place;
         createCard();
+
 
     }
 
     private void createCard() {
-
+        card.setBackgroundResource(R.drawable.card_view_shape);
         LinearLayout.LayoutParams cardParam = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                200
+                300
         );
         cardParam.topMargin = 15;
         card.setLayoutParams(cardParam);

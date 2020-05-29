@@ -76,7 +76,8 @@ public class SearchActivity extends Activity {
             PlaceView placeView = new PlaceView(this,
                     dynamicXML.createTextView(this,place.getName(),"sans-serif-condensed",20,Color.BLACK,Gravity.TOP,0,0,0,0),
                     dynamicXML.createImageView(this,place.getImage(),Gravity.CENTER,0,5,0,5),
-                    dynamicXML.createTextView(this,place.getDescription(),"sans-serif-condensed",15,Color.BLACK,Gravity.CENTER,0,0,0,0));
+                    dynamicXML.createTextView(this,place.getDescription(),"sans-serif-condensed",15,Color.BLACK,Gravity.CENTER,0,0,0,0),
+                    place);
             placesView.add(placeView);
             placesHolder.addView(
                     placeView.getCard()

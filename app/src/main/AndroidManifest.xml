@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".AboutPlaceActivity"></activity>
+        <activity android:name=".SearchActivity" />
         <activity android:name=".WaitingActivity" />
         <activity android:name=".HealthStatementFormActivity" />
         <activity android:name=".DoneActivity" />
