@@ -24,21 +24,15 @@ public class PlaceDialog extends DialogFragment {
     private ImageView restaurantImg;
     private ImageView infoImg;
     private Button inviteButton;
-    private String nameOfRestaurant;
-    private int imgSrc;
-    private int numOfVisitors;
-    private boolean isFull;
+    private Place place;
     private final String INVITE = "invite";
     private final String FULL = "this place is full";
 
 
 
-    public PlaceDialog(String nameOfRestaurant, int imgSrc, int numOfVisitors, boolean isFull) {
+    public PlaceDialog(Place place) {
 
-        this.nameOfRestaurant = nameOfRestaurant;
-        this.imgSrc = imgSrc;
-        this.numOfVisitors = numOfVisitors;
-        this.isFull = isFull;
+        this.place = place;
     }
 
     @Nullable
@@ -57,7 +51,7 @@ public class PlaceDialog extends DialogFragment {
 
     private void setRestaurant() {
 
-        if(isFull){
+        if(place.isFull()){
             restaurantContainer.setBackgroundResource(R.drawable.full_dialog_rounded_bg);
             inviteButton.setBackgroundResource(R.drawable.denied_button_shape);
             inviteButton.setText(FULL);
@@ -67,9 +61,9 @@ public class PlaceDialog extends DialogFragment {
             inviteButton.setText(INVITE);
         }
 
-        nameOfRestaurantTV.setText(nameOfRestaurant);
-        restaurantImg.setImageResource(imgSrc);
-        currentVisitorsTV.setText("Current Visitors : " + numOfVisitors);
+        nameOfRestaurantTV.setText(place.getName());
+        restaurantImg.setImageResource(place.getImage());
+        currentVisitorsTV.setText("Current Visitors : " + place.getNumOfVisitors());
 
 
     }

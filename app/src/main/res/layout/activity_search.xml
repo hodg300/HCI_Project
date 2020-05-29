@@ -58,10 +58,19 @@
     </FrameLayout>
 
     <ScrollView
-        android:id="@+id/list_places"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_field"/>
+        android:layout_below="@id/search_field">
+
+        <LinearLayout
+            android:id="@+id/places_holder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            />
+
+    </ScrollView>
 
 
 
