@@ -2,9 +2,10 @@ package com.example.hci_project;
 
 import androidx.fragment.app.FragmentActivity;
 
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,7 +24,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     private GoogleMap map;
     private ArrayList<LatLng> locations = new ArrayList<>();
     private ArrayList<Marker> markers = new ArrayList<>();
-
+    private ImageView search_btn;
 
 
     @Override
@@ -34,7 +35,27 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        setId();
         createLocations();
+        setOnClickListeners();
+    }
+
+    private void setOnClickListeners() {
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToSearchActivity();
+            }
+        });
+    }
+
+    private void goToSearchActivity(){
+        Intent intent = new Intent(this,SearchActivity.class);
+        startActivity(intent);
+    }
+
+    private void setId() {
+        search_btn = findViewById(R.id.search);
     }
 
     private void createLocations() {
@@ -58,9 +79,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         //Segev Expresss
         markers.add(map.addMarker(new MarkerOptions().position(locations.get(1)).title("שגב אקספרס")));
         //Susu and Sons
-        markers.add(map.addMarker(new MarkerOptions().position(locations.get(1)).title("סוסו אנד סאן").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+        markers.add(map.addMarker(new MarkerOptions().position(locations.get(2)).title("סוסו אנד סאן").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
         //Tel Aviv musium
-        markers.add(map.addMarker(new MarkerOptions().position(locations.get(1)).title("מוזיאון תל אביב")));
+        markers.add(map.addMarker(new MarkerOptions().position(locations.get(3)).title("מוזיאון תל אביב")));
 
 
         //Move Camera to Segev EXPRESS
@@ -97,7 +118,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private void openRestaurantDialog(String nameOfRestaurant, int img, int visitors,boolean isFull){
 
-        RestaurantDialog dialog = new RestaurantDialog(nameOfRestaurant,img,visitors,isFull);
+        PlaceDialog dialog = new PlaceDialog(nameOfRestaurant,img,visitors,isFull);
         dialog.show(getSupportFragmentManager(),"CarPickerDialog");
     }
 }
