@@ -11,6 +11,9 @@ import com.example.hci_project.Place;
 import com.example.hci_project.R;
 import com.example.hci_project.Utils.DynamicXML;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class PlaceView {
 
@@ -22,8 +25,8 @@ public class PlaceView {
     private Context context;
     private Place place;
 
-    public PlaceView(Context context,TextView nameOfPlace,ImageView image,TextView description,Place place){
 
+    public PlaceView(Context context,TextView nameOfPlace,ImageView image,TextView description,Place place){
         dynamicallyXML = new DynamicXML();
         this.context = context;
         this.nameOfPlace = nameOfPlace;
@@ -96,4 +99,6 @@ public class PlaceView {
     public LinearLayout getCard() {
         return card;
     }
+
+
 }
