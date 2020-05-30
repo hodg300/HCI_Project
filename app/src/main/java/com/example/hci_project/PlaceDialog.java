@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.AutoText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +27,10 @@ public class PlaceDialog extends DialogFragment {
     private ImageView restaurantImg;
     private ImageView infoImg;
     private Button inviteButton;
+    private Button stateOfPlace;
     private Place place;
-    private final String INVITE = "invite";
-    private final String FULL = "this place is full";
+    private final String FULL = "The place if currently full";
+    private final String NOT_FULL = "this place is currently open for X visitors";
 
 
 
@@ -59,6 +59,11 @@ public class PlaceDialog extends DialogFragment {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(getContext(),AboutPlaceActivity.class);
+                intent.putExtra(PLACE,MapActivity.places.indexOf(place));
+                startActivity(intent);
+                getDialog().dismiss();
+
             }
         });
     }
@@ -72,13 +77,16 @@ public class PlaceDialog extends DialogFragment {
     private void setRestaurant() {
 
         if(place.isFull()){
+            stateOfPlace.setBackgroundResource(R.drawable.denied_button_shape);
             restaurantContainer.setBackgroundResource(R.drawable.full_dialog_rounded_bg);
-            inviteButton.setBackgroundResource(R.drawable.denied_button_shape);
-            inviteButton.setText(FULL);
+            inviteButton.setText(inviteButton.getText() + " for other time");
+            stateOfPlace.setText("this place is currently full");
+
         } else {
             restaurantContainer.setBackgroundResource(R.drawable.not_full_dialog_rounded_bg);
-            inviteButton.setBackgroundResource(R.drawable.accept_button_shape);
-            inviteButton.setText(INVITE);
+            stateOfPlace.setBackgroundResource(R.drawable.accept_button_shape);
+            stateOfPlace.setText("this place is currently open for " + (place.getMaxVisitors() - place.getNumOfVisitors()) + " visitors");
+
         }
 
         nameOfRestaurantTV.setText(place.getName());
@@ -96,6 +104,7 @@ public class PlaceDialog extends DialogFragment {
         restaurantImg = view.findViewById(R.id.img_of_restaurant);
         infoImg = view.findViewById(R.id.info);
         inviteButton = view.findViewById(R.id.invite_btn);
+        stateOfPlace = view.findViewById(R.id.state_of_place);
     }
 
 }

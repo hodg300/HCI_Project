@@ -16,7 +16,7 @@ public class WaitingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting);
         setId();
-        delay(3);
+        delay(1);
     }
 
     private void setId() {

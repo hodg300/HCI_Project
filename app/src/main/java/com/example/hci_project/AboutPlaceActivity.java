@@ -2,6 +2,7 @@ package com.example.hci_project;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,6 +24,7 @@ public class AboutPlaceActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_place);
 
+        place = MapActivity.places.get(getIntent().getIntExtra(PlaceDialog.PLACE,0));
         setIds();
         setTextOnViews();
         setOnClickListeners();

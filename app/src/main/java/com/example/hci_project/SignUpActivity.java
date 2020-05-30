@@ -37,7 +37,7 @@ public class SignUpActivity extends Activity {
             @Override
             public void onClick(View view) {
                 progress_bar.setVisibility(View.VISIBLE);
-                delay(3);
+                delay(1);
             }
         });
     }
