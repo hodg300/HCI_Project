@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/cardview_shadow_start_color">
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:id="@+id/menu"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_menu" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/settings_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_layout"
+        android:text="Settings"
+        android:gravity="center"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_margin = "20dp"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+
+    <Button
+        android:id="@+id/personal_info_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/settings_title"
+        android:layout_centerHorizontal="true"
+        android:text="Personal Info"
+        android:background="@drawable/regular_button_shape_blue"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-smallcaps"/>
+
+
+</RelativeLayout>

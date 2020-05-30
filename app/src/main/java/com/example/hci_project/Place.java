@@ -15,9 +15,10 @@ public class Place {
     private int maxVisitors;
     private String openHour;
     private String cuisines;
+    private int index;
 
-    public Place(String name,int image,String description, LatLng latlng, int numOfVisitors,
-                 boolean isFull,int maxVisitors,String openHour,String cuisines) {
+    public Place(String name, int image, String description, LatLng latlng, int numOfVisitors,
+                 boolean isFull, int maxVisitors, String openHour, String cuisines, int index) {
         this.name = name;
         this.image = image;
         this.description = description;
@@ -27,6 +28,7 @@ public class Place {
         this.maxVisitors = maxVisitors;
         this.openHour= openHour;
         this.cuisines = cuisines;
+        this.index = index;
     }
 
     public String getName() {
@@ -109,4 +111,11 @@ public class Place {
         this.cuisines = cuisines;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 }

@@ -4,6 +4,7 @@ package com.example.hci_project;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ public class AboutPlaceActivity extends Activity {
     private TextView openHour;
     private TextView cuisines;
     private Button invite;
+    private ImageView menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,19 @@ public class AboutPlaceActivity extends Activity {
     }
 
     private void setOnClickListeners() {
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToSideMenuActivity();
+            }
+        });
+    }
 
+    private void goToSideMenuActivity(){
+        Intent intent = new Intent(this,SideMenuActivity.class);
+        startActivity(intent);
+        this.overridePendingTransition(R.anim.left_to_right,
+                R.anim.right_to_left);
     }
 
     private void setTextOnViews() {
@@ -51,5 +65,6 @@ public class AboutPlaceActivity extends Activity {
         openHour = findViewById(R.id.hours);
         cuisines = findViewById(R.id.Cuisines_type);
         invite = findViewById(R.id.invite_btn);
+        menu = findViewById(R.id.menu);
     }
 }

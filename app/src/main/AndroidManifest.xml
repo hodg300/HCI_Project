@@ -17,7 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
-        <activity android:name=".AboutPlaceActivity"></activity>
+        <activity android:name=".MyInvitationsActivity"></activity>
+        <activity android:name=".SideMenuActivity" />
+        <activity android:name=".PersonalInfoActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".AboutPlaceActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".WaitingActivity" />
         <activity android:name=".HealthStatementFormActivity" />
