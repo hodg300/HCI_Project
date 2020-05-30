@@ -1,9 +1,14 @@
 package com.example.hci_project;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
-public class Place {
+import java.io.Serializable;
+
+public class Place implements Parcelable  {
 
     private String name;
     private String description;
@@ -107,5 +112,15 @@ public class Place {
 
     public void setCuisines(String cuisines) {
         this.cuisines = cuisines;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }

@@ -1,8 +1,10 @@
 package com.example.hci_project;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.AutoText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class PlaceDialog extends DialogFragment {
+import java.io.Serializable;
 
+public class PlaceDialog extends DialogFragment {
+    final static String PLACE = "place";
     private RelativeLayout restaurantContainer;
     private TextView nameOfRestaurantTV;
     private TextView currentVisitorsTV;
@@ -44,9 +48,25 @@ public class PlaceDialog extends DialogFragment {
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setRestaurant();
+        setOnClickListeners();
 
 
         return view;
+    }
+
+    private void setOnClickListeners() {
+        infoImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+    private void goToAboutPlaceActivity(){
+        Intent intent = new Intent(getContext(),AboutPlaceActivity.class);
+        //
+        startActivity(intent);
     }
 
     private void setRestaurant() {

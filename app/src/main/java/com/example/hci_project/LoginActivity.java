@@ -54,7 +54,7 @@ public class LoginActivity extends Activity {
 
     private void goToWaitingActivity() {
 
-        Intent intent = new Intent(this,AboutPlaceActivity.class);
+        Intent intent = new Intent(this,WaitingActivity.class);
         startActivity(intent);
     }
 
