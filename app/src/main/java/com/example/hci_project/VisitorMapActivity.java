@@ -26,6 +26,7 @@ public class VisitorMapActivity extends FragmentActivity implements OnMapReadyCa
     private GoogleMap map;
     private ImageView search_btn;
     public static ArrayList<Place> places = new ArrayList<>();
+    public static ArrayList<Invitation> invitations = new ArrayList<>();
     public static User currentUser;
     private Button clock;
     private ImageView menu;

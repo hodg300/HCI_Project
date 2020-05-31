@@ -61,7 +61,16 @@ public class PlaceDialog extends DialogFragment {
                 intent.putExtra(PLACE, VisitorMapActivity.places.indexOf(place));
                 startActivity(intent);
                 getDialog().dismiss();
+            }
+        });
 
+        inviteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),InvitationActivity.class);
+                intent.putExtra(PLACE, VisitorMapActivity.places.indexOf(place));
+                startActivity(intent);
+                getDialog().dismiss();
             }
         });
     }

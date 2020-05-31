@@ -7,5 +7,7 @@ public class Finals {
     public static final String PLACE_OWNER = "place owner";
     public static final String POLICE_OFFICER = "police officer";
     public static final String MINISTRY_OF_HEALTH = "ministry of health";
+    public static final String PLACE_INDEX = "place index";
+    public  static final String INVITATION = "invitation";
 
 }
