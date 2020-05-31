@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/not_full_dialog_rounded_bg"
-    tools:context=".VisitorMapActivity">
+    tools:context=".MapActivity">
 
 
     <LinearLayout

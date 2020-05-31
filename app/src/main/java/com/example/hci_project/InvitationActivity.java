@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -87,9 +86,9 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
 
     private void createInvitation() {
 
-         invitation = new Invitation(VisitorMapActivity.places.get(placeIndex).getName(),
+         invitation = new Invitation(MapActivity.places.get(placeIndex).getName(),
                 date.getText().toString(),
-                timePicker.getHour() + ":" +  timePicker.getMinute(),numOfGuests.getText().toString(),VisitorMapActivity.places.get(placeIndex).getImage());
+                timePicker.getHour() + ":" +  timePicker.getMinute(),numOfGuests.getText().toString(), MapActivity.places.get(placeIndex).getImage());
     }
 
     private void showDatePickerDialog() {
@@ -105,7 +104,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
 
     private void setInfo() {
 
-        header.setText(VisitorMapActivity.places.get(placeIndex).getName());
+        header.setText(MapActivity.places.get(placeIndex).getName());
         date.setText(ZonedDateTime.now().getDayOfMonth() + " / "  +ZonedDateTime.now().getMonthValue() + " / " + ZonedDateTime.now().getYear());
     }
 

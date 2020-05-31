@@ -129,7 +129,7 @@ public class SearchActivity extends Activity {
 
         searchedPlaces.clear();
         
-        for(Place place : VisitorMapActivity.places){
+        for(Place place : MapActivity.places){
             if(place.getName().toLowerCase().contains(charSequence.toString().toLowerCase())){
                 searchedPlaces.add(place);
             }

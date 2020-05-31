@@ -27,7 +27,7 @@ public class WaitingActivity extends Activity {
 
     private void goToVisitorMapActivity() {
 
-        Intent intent = new Intent(this, VisitorMapActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         finish();
@@ -46,7 +46,7 @@ public class WaitingActivity extends Activity {
                             goToVisitorMapActivity();
                         } else if(user.getRole().equals(Finals.PLACE_OWNER)){
                             //need to change is future
-                            goToVisitorMapActivity();
+                            goToPlaceStateActivity();
 
                         } else if(user.getRole().equals(Finals.POLICE_OFFICER)){
                             //need to change is future
@@ -61,5 +61,13 @@ public class WaitingActivity extends Activity {
                 }, milliseconds);
             }
         });
+    }
+
+    private void goToPlaceStateActivity() {
+
+        Intent intent = new Intent(this, PlaceStateActivity.class);
+        intent.putExtra(Finals.USER,user);
+        startActivity(intent);
+        finish();
     }
 }
