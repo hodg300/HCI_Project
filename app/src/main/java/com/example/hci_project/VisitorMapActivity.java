@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.hci_project.Utils.Finals;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,11 +21,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class VisitorMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap map;
     private ImageView search_btn;
     public static ArrayList<Place> places = new ArrayList<>();
+    public static User currentUser;
     private Button clock;
     private ImageView menu;
 
@@ -32,10 +34,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        setContentView(R.layout.activity_visitor_map);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        currentUser = (User) getIntent().getSerializableExtra(Finals.USER);
         mapFragment.getMapAsync(this);
         setIds();
         createLocations();
@@ -61,6 +64,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private void goToSideMenuActivity(){
         Intent intent = new Intent(this,SideMenuActivity.class);
+        intent.putExtra(Finals.USER, currentUser);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);

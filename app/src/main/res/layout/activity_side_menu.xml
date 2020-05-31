@@ -7,33 +7,64 @@
     android:background="@color/colorWhite"
     tools:context=".SideMenuActivity">
 
-
     <FrameLayout
-        android:id="@+id/my_invintations_field"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/profile_image_container"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp">
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/officer" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_right_arrow"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right"/>
+    </FrameLayout>
+        <requestFocus />
+    <TextView
+        android:id="@+id/name_of_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Officer Azulay"
+        android:layout_below="@id/profile_image_container"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginLeft="15dp"
+        android:layout_marginVertical="5dp"
+        android:textStyle="bold"
+        android:textSize="16dp"/>
+
+    <View
+        android:id="@+id/horizontal_line"
+        android:layout_below="@id/name_of_user"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginRight="150dp"
+        android:layout_marginLeft="15dp"
+        android:layout_height="1dp"
+        android:background="@color/darkGray" />
+
 
         <TextView
             android:id="@+id/my_invitations_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="my invitations"
+            android:layout_below="@id/horizontal_line"
             android:fontFamily="sans-serif-smallcaps"
-            android:layout_margin = "10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
             android:textStyle="bold"
-            android:textSize="30dp"/>
-            <requestFocus />
+            android:textSize="25dp"/>
 
-
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/ic_right_arrow"
-        android:layout_marginRight="10dp"
-        android:layout_gravity="right"/>
-    </FrameLayout>
 
     <TextView
         android:id="@+id/settings_title"
@@ -41,10 +72,10 @@
         android:layout_height="wrap_content"
         android:text="settings"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_below="@id/my_invintations_field"
-        android:layout_margin = "10dp"
+        android:layout_below="@id/my_invitations_title"
+        android:layout_marginLeft="15dp"
         android:textStyle="bold"
-        android:textSize="30dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/logout_title"
         android:layout_width="match_parent"
@@ -52,9 +83,9 @@
         android:text="log out"
         android:fontFamily="sans-serif-smallcaps"
         android:layout_below="@id/settings_title"
-        android:layout_margin = "10dp"
+        android:layout_marginLeft="15dp"
         android:textStyle="bold"
-        android:textSize="30dp"/>
+        android:textSize="25dp"/>
 
 
 </RelativeLayout>

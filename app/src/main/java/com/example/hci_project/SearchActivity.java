@@ -1,22 +1,16 @@
 package com.example.hci_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
@@ -129,8 +123,8 @@ public class SearchActivity extends Activity {
 
         searchedPlaces.clear();
         
-        for(Place place : MapActivity.places){
-            if(place.getName().contains(charSequence)){
+        for(Place place : VisitorMapActivity.places){
+            if(place.getName().toLowerCase().contains(charSequence.toString().toLowerCase())){
                 searchedPlaces.add(place);
             }
         }

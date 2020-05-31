@@ -17,8 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import java.io.Serializable;
-
 public class PlaceDialog extends DialogFragment {
     final static String PLACE = "place";
     private RelativeLayout restaurantContainer;
@@ -60,7 +58,7 @@ public class PlaceDialog extends DialogFragment {
             public void onClick(View view) {
 
                 Intent intent = new Intent(getContext(),AboutPlaceActivity.class);
-                intent.putExtra(PLACE,MapActivity.places.indexOf(place));
+                intent.putExtra(PLACE, VisitorMapActivity.places.indexOf(place));
                 startActivity(intent);
                 getDialog().dismiss();
 

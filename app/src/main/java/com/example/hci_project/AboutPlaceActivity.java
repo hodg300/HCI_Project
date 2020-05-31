@@ -26,7 +26,7 @@ public class AboutPlaceActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_place);
 
-        place = MapActivity.places.get(getIntent().getIntExtra(PlaceDialog.PLACE,0));
+        place = VisitorMapActivity.places.get(getIntent().getIntExtra(PlaceDialog.PLACE,0));
         setIds();
         setTextOnViews();
         setOnClickListeners();
