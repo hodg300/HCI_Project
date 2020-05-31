@@ -36,11 +36,20 @@
         android:textStyle="bold"
         android:textSize="30dp"/>
 
+    <View
+        android:id="@+id/horizontal_line"
+        android:layout_below="@id/settings_title"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+        android:layout_height="1dp"
+        android:background="@color/darkGray" />
+
     <Button
         android:id="@+id/personal_info_btn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/settings_title"
+        android:layout_below="@id/horizontal_line"
         android:layout_centerHorizontal="true"
         android:text="Personal Info"
         android:background="@drawable/regular_button_shape_blue"

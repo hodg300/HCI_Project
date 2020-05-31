@@ -4,10 +4,19 @@ import java.io.Serializable;
 
 public class Invitation implements Serializable {
 
-    String nameOfPlace;
-    String Date;
-    String hour;
-    String numOfGuests;
+    private String nameOfPlace;
+    private String Date;
+    private String hour;
+    private String numOfGuests;
+    private int image;
+
+    public Invitation(String nameOfPlace, String date, String hour, String numOfGuests, int image) {
+        this.nameOfPlace = nameOfPlace;
+        Date = date;
+        this.hour = hour;
+        this.numOfGuests = numOfGuests;
+        this.image = image;
+    }
 
     public String getNameOfPlace() {
         return nameOfPlace;
@@ -41,10 +50,11 @@ public class Invitation implements Serializable {
         this.numOfGuests = numOfGuests;
     }
 
-    public Invitation(String nameOfPlace, String date, String hour, String numOfGuests) {
-        this.nameOfPlace = nameOfPlace;
-        Date = date;
-        this.hour = hour;
-        this.numOfGuests = numOfGuests;
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 }

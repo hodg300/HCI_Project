@@ -66,6 +66,7 @@ public class SideMenuActivity extends Activity {
         onBackPressed();
         this.overridePendingTransition(R.anim.left_out,
                 R.anim.right_in);
+        finish();
     }
 
     @Override
@@ -73,20 +74,26 @@ public class SideMenuActivity extends Activity {
         super.onBackPressed();
         this.overridePendingTransition(R.anim.left_out,
                 R.anim.right_in);
+        finish();
     }
 
     private void goToMyInvitationsActivity(){
         Intent intent = new Intent(this,MyInvitationsActivity.class);
+        intent.putExtra(Finals.USER, user);
         startActivity(intent);
+        finish();
     }
 
     private void goToSettingsActivity(){
         Intent intent = new Intent(this,SettingsActivity.class);
+        intent.putExtra(Finals.USER,user);
         startActivity(intent);
+        finish();
     }
     private void goToLoginActivity(){
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
+        finish();
     }
     private void setIds() {
         myInvitations = findViewById(R.id.my_invitations_title);

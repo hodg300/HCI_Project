@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,6 +15,7 @@ import android.widget.TimePicker;
 
 import com.example.hci_project.Utils.Finals;
 
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 
 public class InvitationActivity extends Activity  implements DatePickerDialog.OnDateSetListener{
@@ -87,9 +89,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
 
          invitation = new Invitation(VisitorMapActivity.places.get(placeIndex).getName(),
                 date.getText().toString(),
-                timePicker.getHour() + ":" +  timePicker.getMinute(),numOfGuests.getText().toString());
-
-
+                timePicker.getHour() + ":" +  timePicker.getMinute(),numOfGuests.getText().toString(),VisitorMapActivity.places.get(placeIndex).getImage());
     }
 
     private void showDatePickerDialog() {
@@ -104,9 +104,9 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
     }
 
     private void setInfo() {
-        header.setText("Invitation for " + VisitorMapActivity.places.get(placeIndex).getName());
 
-        date.setText("pick your date");
+        header.setText(VisitorMapActivity.places.get(placeIndex).getName());
+        date.setText(ZonedDateTime.now().getDayOfMonth() + " / "  +ZonedDateTime.now().getMonthValue() + " / " + ZonedDateTime.now().getYear());
     }
 
     private void setIds() {
@@ -124,6 +124,6 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
 
-        date.setText(dayOfMonth +"/" + month + "/" + year);
+        date.setText(dayOfMonth +" / " + month + " / " + year);
     }
 }

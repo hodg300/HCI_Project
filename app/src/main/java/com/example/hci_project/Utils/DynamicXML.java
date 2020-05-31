@@ -22,9 +22,9 @@ import com.example.hci_project.R;
 
 public class DynamicXML {
 
-    public ImageView createImageView(Context context,int image, int gravity, int leftMargin, int topMargin, int rightMargin, int bottomMargin) {
+    public ImageView createImageView(Context context,int image, int gravity, int leftMargin, int topMargin, int rightMargin, int bottomMargin,int width, int height) {
 
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, height);
         lp.setMargins(leftMargin,topMargin,rightMargin,bottomMargin);
         lp.gravity = gravity;
         ImageView imageView = new ImageView(context);

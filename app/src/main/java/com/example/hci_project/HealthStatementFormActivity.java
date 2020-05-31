@@ -58,6 +58,7 @@ public class HealthStatementFormActivity extends Activity {
     private void goToMapActivity() {
 
         Intent intent = new Intent(this,VisitorMapActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
         finish();
     }

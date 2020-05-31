@@ -156,7 +156,7 @@ public class VisitorMapActivity extends FragmentActivity implements OnMapReadyCa
 
     private void openPlaceDialog(Place place){
 
-        PlaceDialog dialog = new PlaceDialog(place);
+        PlaceDialog dialog = new PlaceDialog(place,currentUser);
         dialog.show(getSupportFragmentManager(),"CarPickerDialog");
     }
 }

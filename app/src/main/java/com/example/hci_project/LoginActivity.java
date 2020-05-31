@@ -84,6 +84,7 @@ public class LoginActivity extends Activity {
 
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
+        finish();
     }
 
     private void goToSignUpActivity() {

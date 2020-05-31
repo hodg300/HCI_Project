@@ -85,7 +85,7 @@ public class SearchActivity extends Activity {
 
             PlaceView placeView = new PlaceView(this,
                     dynamicXML.createTextView(this,place.getName(),"sans-serif-condensed",20,Color.BLACK,Gravity.TOP,0,0,0,0),
-                    dynamicXML.createImageView(this,place.getImage(),Gravity.CENTER,0,5,0,5),
+                    dynamicXML.createImageView(this,place.getImage(),Gravity.CENTER,0,5,0,5,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT),
                     dynamicXML.createTextView(this,place.getDescription(),"sans-serif-condensed",15,Color.BLACK,Gravity.CENTER,0,0,0,0),
                     place);
             linearToPlaceMap.put(placeView.getCard(),place);
@@ -112,8 +112,9 @@ public class SearchActivity extends Activity {
     private void goToAboutPlaceActivity(int pressedPlaceIndex){
         Intent intent = new Intent(this,AboutPlaceActivity.class);
         intent.putExtra(Finals.USER,user);
-        intent.putExtra(PlaceDialog.PLACE,pressedPlaceIndex);
+        intent.putExtra(Finals.PLACE,pressedPlaceIndex);
         startActivity(intent);
+        finish();
     }
 
     private void goToSideMenuActivity(){

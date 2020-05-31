@@ -9,5 +9,6 @@ public class Finals {
     public static final String MINISTRY_OF_HEALTH = "ministry of health";
     public static final String PLACE_INDEX = "place index";
     public  static final String INVITATION = "invitation";
+    public final static String PLACE = "place";
 
 }
