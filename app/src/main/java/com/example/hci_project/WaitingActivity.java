@@ -45,10 +45,16 @@ public class WaitingActivity extends Activity {
                         if(user.getRole().equals(Finals.VISITOR)) {
                             goToVisitorMapActivity();
                         } else if(user.getRole().equals(Finals.PLACE_OWNER)){
+                            //need to change is future
+                            goToVisitorMapActivity();
 
                         } else if(user.getRole().equals(Finals.POLICE_OFFICER)){
+                            //need to change is future
+                            goToVisitorMapActivity();
 
                         }else if(user.getRole().equals(Finals.MINISTRY_OF_HEALTH)){
+                            //need to change is future
+                            goToVisitorMapActivity();
 
                         }
                     }

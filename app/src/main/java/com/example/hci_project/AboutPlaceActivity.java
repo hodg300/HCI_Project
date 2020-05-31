@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hci_project.Utils.Finals;
+
 public class AboutPlaceActivity extends Activity {
     final String CURRENT_VISITORS = "Current visitors: ";
     private Place place;
@@ -20,12 +22,13 @@ public class AboutPlaceActivity extends Activity {
     private TextView cuisines;
     private Button invite;
     private ImageView menu;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_place);
-
+        user = (User) getIntent().getSerializableExtra(Finals.USER);
         place = VisitorMapActivity.places.get(getIntent().getIntExtra(PlaceDialog.PLACE,0));
         setIds();
         setTextOnViews();
@@ -44,6 +47,7 @@ public class AboutPlaceActivity extends Activity {
     private void goToSideMenuActivity(){
         Intent intent = new Intent(this,SideMenuActivity.class);
         startActivity(intent);
+        intent.putExtra(Finals.USER,user);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);
     }

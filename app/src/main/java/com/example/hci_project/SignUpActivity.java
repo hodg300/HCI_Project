@@ -69,7 +69,6 @@ public class SignUpActivity extends Activity {
 
     private boolean checkInfoValidation() {
 
-
         if(firstName.getText().toString().isEmpty() ){
             firstName.setError("First name can not be empty");
             return false;

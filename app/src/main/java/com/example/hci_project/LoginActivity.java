@@ -68,14 +68,14 @@ public class LoginActivity extends Activity {
         Intent intent = new Intent(this,WaitingActivity.class);
         User user = null;
 
-        if(email.getText().toString().contains(Finals.VISITOR)){
+        if(email.getText().toString().contains("visitor")){
             user = new User("Hod","Gohasi",password.getText().toString(),email.getText().toString(), Finals.VISITOR,R.drawable.visitor);
-        }else if(email.getText().toString().contains(Finals.POLICE_OFFICER)){
+        }else if(email.getText().toString().contains("police")){
             user = new User("Officer","Azzulay",password.getText().toString(),email.getText().toString(), Finals.POLICE_OFFICER,R.drawable.officer);
-        } else if(email.getText().toString().contains(Finals.PLACE_OWNER)){
+        } else if(email.getText().toString().contains("owner")){
             user = new User("Menny","Mamtera",password.getText().toString(),email.getText().toString(), Finals.PLACE_OWNER,R.drawable.owner);
         }
-        else if(email.getText().toString().contains(Finals.MINISTRY_OF_HEALTH)){
+        else if(email.getText().toString().contains("health")){
             user = new User("Moshe","Bar Siman Tov",password.getText().toString(),email.getText().toString(), Finals.MINISTRY_OF_HEALTH,R.drawable.health);
         } else {
             email.setError("email or password are incorrect");

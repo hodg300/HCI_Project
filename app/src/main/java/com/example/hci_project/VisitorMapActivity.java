@@ -72,6 +72,7 @@ public class VisitorMapActivity extends FragmentActivity implements OnMapReadyCa
 
     private void goToSearchActivity(){
         Intent intent = new Intent(this,SearchActivity.class);
+        intent.putExtra(Finals.USER,currentUser);
         startActivity(intent);
     }
 

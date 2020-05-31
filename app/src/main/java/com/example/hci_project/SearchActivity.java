@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
+import com.example.hci_project.Utils.Finals;
 import com.example.hci_project.Views.PlaceView;
 
 import java.util.ArrayList;
@@ -29,10 +30,12 @@ public class SearchActivity extends Activity {
     private DynamicXML dynamicXML = new DynamicXML();
     private Map<LinearLayout,Place> linearToPlaceMap;
     private ImageView menu;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user = (User) getIntent().getSerializableExtra(Finals.USER);
         setContentView(R.layout.activity_search);
         linearToPlaceMap = new HashMap<>();
         setIds();
@@ -108,12 +111,14 @@ public class SearchActivity extends Activity {
 
     private void goToAboutPlaceActivity(int pressedPlaceIndex){
         Intent intent = new Intent(this,AboutPlaceActivity.class);
+        intent.putExtra(Finals.USER,user);
         intent.putExtra(PlaceDialog.PLACE,pressedPlaceIndex);
         startActivity(intent);
     }
 
     private void goToSideMenuActivity(){
         Intent intent = new Intent(this,SideMenuActivity.class);
+        intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);
