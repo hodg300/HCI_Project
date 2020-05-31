@@ -1,7 +1,5 @@
 package com.example.hci_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
 import com.example.hci_project.Views.InvitationView;
-import com.example.hci_project.Views.PlaceView;
 
 public class MyInvitationsActivity extends Activity {
 
@@ -63,14 +60,14 @@ public class MyInvitationsActivity extends Activity {
 
         invitationsHolder.removeAllViews();
 
-        if(VisitorMapActivity.invitations.size() == 0){
+        if(MapActivity.invitations.size() == 0){
             TextView noResultTV = dynamicXML.createTextView(this,"You don't have any invitations yet.","sans-serif-condensed",
                     13, Color.BLACK, Gravity.CENTER_HORIZONTAL,0,50,0,0);
             invitationsHolder.addView(noResultTV);
             return;
         }
 
-        for(Invitation invitation : VisitorMapActivity.invitations){
+        for(Invitation invitation : MapActivity.invitations){
 
             String invitationInfoString = invitation.getDate() + "\nOrder for " + invitation.getNumOfGuests() + " at " + invitation.getHour();
 

@@ -80,7 +80,7 @@ public class PlaceDialog extends DialogFragment {
         Log.d("TEST", place.getName());
 
         Intent intent = new Intent(getContext(),InvitationActivity.class);
-        intent.putExtra(Finals.PLACE_INDEX, VisitorMapActivity.places.indexOf(place));
+        intent.putExtra(Finals.PLACE_INDEX, MapActivity.places.indexOf(place));
         startActivity(intent);
         getDialog().dismiss();
     }
@@ -89,7 +89,7 @@ public class PlaceDialog extends DialogFragment {
 
         Log.d("TEST", "user name " + user.firstName);
         Intent intent = new Intent(getContext(),AboutPlaceActivity.class);
-        intent.putExtra(Finals.PLACE, VisitorMapActivity.places.indexOf(place));
+        intent.putExtra(Finals.PLACE, MapActivity.places.indexOf(place));
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         getDialog().dismiss();

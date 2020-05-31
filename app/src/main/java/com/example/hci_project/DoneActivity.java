@@ -25,7 +25,7 @@ public class DoneActivity extends Activity {
 
     private void goToVisitorMapActivity() {
 
-        Intent intent = new Intent(this, VisitorMapActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         finish();

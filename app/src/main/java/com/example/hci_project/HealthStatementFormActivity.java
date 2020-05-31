@@ -32,7 +32,7 @@ public class HealthStatementFormActivity extends Activity {
             public void onClick(View view) {
 
                 if(approveCheckBox.isChecked()){
-                    VisitorMapActivity.invitations.add(invitation);
+                    MapActivity.invitations.add(invitation);
                     goToMapActivity();
                     popSuccessMessage();
                 } else {
@@ -57,7 +57,7 @@ public class HealthStatementFormActivity extends Activity {
 
     private void goToMapActivity() {
 
-        Intent intent = new Intent(this,VisitorMapActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
         finish();

@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,8 +21,10 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
-public class VisitorMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap map;
     private ImageView search_btn;
@@ -30,12 +33,15 @@ public class VisitorMapActivity extends FragmentActivity implements OnMapReadyCa
     public static User currentUser;
     private Button clock;
     private ImageView menu;
+    private int hours;
+    private int minutes;
+    private Date dt = new Date();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visitor_map);
+        setContentView(R.layout.activity_map);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -44,6 +50,32 @@ public class VisitorMapActivity extends FragmentActivity implements OnMapReadyCa
         setIds();
         createLocations();
         setOnClickListeners();
+        changeTime();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        handleTime();
+    }
+
+    private void handleTime() {
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+
+              changeTime();
+              handleTime();
+
+            }
+        }, 5000);
+
+    }
+
+    private void changeTime(){
+        // current time
+        hours = dt.getHours();     // gets the current houre
+        minutes = dt.getMinutes(); //get the current minutes
+        clock.setText(hours +":" + minutes);
     }
 
     private void setOnClickListeners() {

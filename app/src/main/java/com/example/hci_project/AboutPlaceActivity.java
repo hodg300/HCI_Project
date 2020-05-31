@@ -4,7 +4,6 @@ package com.example.hci_project;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,7 +29,7 @@ public class AboutPlaceActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_place);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
-        place = VisitorMapActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
+        place = MapActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
         setIds();
         setTextOnViews();
         setOnClickListeners();
@@ -55,7 +54,7 @@ public class AboutPlaceActivity extends Activity {
     private void goToInvitationActivity() {
 
         Intent intent = new Intent(this,InvitationActivity.class);
-        intent.putExtra(Finals.PLACE_INDEX, VisitorMapActivity.places.indexOf(place));
+        intent.putExtra(Finals.PLACE_INDEX, MapActivity.places.indexOf(place));
         startActivity(intent);
     }
 

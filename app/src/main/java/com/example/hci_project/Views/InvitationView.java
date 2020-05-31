@@ -2,7 +2,6 @@ package com.example.hci_project.Views;
 
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -14,12 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hci_project.MyInvitationsActivity;
 import com.example.hci_project.R;
 import com.example.hci_project.Utils.DynamicXML;
-import com.example.hci_project.VisitorMapActivity;
+import com.example.hci_project.MapActivity;
 
 import static com.example.hci_project.MyInvitationsActivity.invitationsHolder;
 
@@ -142,16 +139,16 @@ public class InvitationView {
     public void deleteInvitation(){
 
         //Remove from list
-        for(int i = 0; i < VisitorMapActivity.invitations.size(); i++){
-            if(VisitorMapActivity.invitations.get(i).getNameOfPlace().equals(nameOfPlace.getText().toString())){
-                VisitorMapActivity.invitations.remove(i);
+        for(int i = 0; i < MapActivity.invitations.size(); i++){
+            if(MapActivity.invitations.get(i).getNameOfPlace().equals(nameOfPlace.getText().toString())){
+                MapActivity.invitations.remove(i);
             }
         }
 
         //Remove from UI
         invitationsHolder.removeView(this.getCard());
 
-        if(VisitorMapActivity.invitations.size() == 0){
+        if(MapActivity.invitations.size() == 0){
             TextView noResultTV = dynamicallyXML.createTextView(context,"You don't have any invitations yet.","sans-serif-condensed",
                     13, Color.BLACK, Gravity.CENTER_HORIZONTAL,0,50,0,0);
             invitationsHolder.addView(noResultTV);
