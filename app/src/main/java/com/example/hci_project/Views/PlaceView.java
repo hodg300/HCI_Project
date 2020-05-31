@@ -11,9 +11,6 @@ import com.example.hci_project.Place;
 import com.example.hci_project.R;
 import com.example.hci_project.Utils.DynamicXML;
 
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class PlaceView {
 

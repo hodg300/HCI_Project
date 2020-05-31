@@ -4,10 +4,13 @@ package com.example.hci_project;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.hci_project.Utils.Finals;
 
 public class AboutPlaceActivity extends Activity {
     final String CURRENT_VISITORS = "Current visitors: ";
@@ -20,13 +23,14 @@ public class AboutPlaceActivity extends Activity {
     private TextView cuisines;
     private Button invite;
     private ImageView menu;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_place);
-
-        place = MapActivity.places.get(getIntent().getIntExtra(PlaceDialog.PLACE,0));
+        user = (User) getIntent().getSerializableExtra(Finals.USER);
+        place = VisitorMapActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
         setIds();
         setTextOnViews();
         setOnClickListeners();
@@ -39,11 +43,27 @@ public class AboutPlaceActivity extends Activity {
                 goToSideMenuActivity();
             }
         });
+
+        invite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               goToInvitationActivity();
+            }
+        });
+    }
+
+    private void goToInvitationActivity() {
+
+        Intent intent = new Intent(this,InvitationActivity.class);
+        intent.putExtra(Finals.PLACE_INDEX, VisitorMapActivity.places.indexOf(place));
+        startActivity(intent);
     }
 
     private void goToSideMenuActivity(){
         Intent intent = new Intent(this,SideMenuActivity.class);
+        intent.putExtra(Finals.USER,user);
         startActivity(intent);
+        intent.putExtra(Finals.USER,user);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);
     }

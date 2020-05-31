@@ -1,20 +1,22 @@
 package com.example.hci_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
 
+import com.example.hci_project.Utils.Finals;
+
 public class WaitingActivity extends Activity {
 
         private ProgressBar progressBar;
+        private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting);
+        user = (User) getIntent().getSerializableExtra(Finals.USER);
         setId();
         delay(1);
     }
@@ -23,9 +25,10 @@ public class WaitingActivity extends Activity {
         progressBar = findViewById(R.id.progress_bar);
     }
 
-    private void goToMapActivity() {
+    private void goToVisitorMapActivity() {
 
-        Intent intent = new Intent(this,MapActivity.class);
+        Intent intent = new Intent(this, VisitorMapActivity.class);
+        intent.putExtra(Finals.USER,user);
         startActivity(intent);
         finish();
     }
@@ -39,7 +42,21 @@ public class WaitingActivity extends Activity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        goToMapActivity();
+                        if(user.getRole().equals(Finals.VISITOR)) {
+                            goToVisitorMapActivity();
+                        } else if(user.getRole().equals(Finals.PLACE_OWNER)){
+                            //need to change is future
+                            goToVisitorMapActivity();
+
+                        } else if(user.getRole().equals(Finals.POLICE_OFFICER)){
+                            //need to change is future
+                            goToVisitorMapActivity();
+
+                        }else if(user.getRole().equals(Finals.MINISTRY_OF_HEALTH)){
+                            //need to change is future
+                            goToVisitorMapActivity();
+
+                        }
                     }
                 }, milliseconds);
             }

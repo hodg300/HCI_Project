@@ -15,9 +15,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
-        <activity android:name=".MyInvitationsActivity"></activity>
+        android:supportsRtl="false"
+        android:theme="@style/AppFullScreenTheme">
+        <activity android:name=".InvitationActivity"></activity>
+        <activity android:name=".MyInvitationsActivity" />
         <activity android:name=".SideMenuActivity" />
         <activity android:name=".PersonalInfoActivity" />
         <activity android:name=".SettingsActivity" />
@@ -32,7 +33,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-        <activity android:name=".MapActivity" />
+        <activity android:name=".VisitorMapActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

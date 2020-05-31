@@ -8,15 +8,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.hci_project.Utils.Finals;
+
 public class SettingsActivity extends Activity {
 
     private Button personalInfo;
     private ImageView menu;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        user = (User) getIntent().getSerializableExtra(Finals.USER);
         setIds();
         setOnClickListeners();
     }
@@ -29,6 +33,7 @@ public class SettingsActivity extends Activity {
 
     private void goToSideMenuActivity(){
         Intent intent = new Intent(this,SideMenuActivity.class);
+        intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);

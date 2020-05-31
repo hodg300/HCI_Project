@@ -23,6 +23,7 @@
         android:id="@+id/first_name_editView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:padding="10dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:inputType="text"
@@ -38,6 +39,7 @@
         android:id="@+id/last_name_editView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:padding="10dp"
         android:layout_centerHorizontal="true"
         android:inputType="text"
         android:layout_below="@id/first_name_editView"
@@ -50,12 +52,29 @@
         android:background="@drawable/edit_text_shape_blue"/>
 
     <EditText
+        android:id="@+id/email_editView"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="textEmailAddress"
+        android:layout_below="@id/last_name_editView"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="Email"
+        android:textColor="@color/colorBlack"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:background="@drawable/edit_text_shape_blue"/>
+
+    <EditText
         android:layout_marginTop="10dp"
         android:id="@+id/password_edit_text"
         android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
+        android:padding="10dp"
         android:layout_centerHorizontal="true"
         android:hint="Password"
         android:background="@drawable/edit_text_shape_blue"
@@ -63,7 +82,7 @@
         android:gravity="center"
         android:textSize="25dp"
         android:textColor="@color/colorWhite"
-        android:layout_below="@id/last_name_editView"/>
+        android:layout_below="@id/email_editView"/>
 
     <EditText
         android:layout_marginTop="10dp"
@@ -75,6 +94,7 @@
         android:layout_centerHorizontal="true"
         android:hint="Confirm Password"
         android:textSize="25dp"
+        android:padding="10dp"
         android:background="@drawable/edit_text_shape_blue"
         android:inputType="textPassword"
         android:gravity="center"

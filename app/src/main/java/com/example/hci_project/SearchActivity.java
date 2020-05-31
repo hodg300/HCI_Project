@@ -1,25 +1,20 @@
 package com.example.hci_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
+import com.example.hci_project.Utils.Finals;
 import com.example.hci_project.Views.PlaceView;
 
 import java.util.ArrayList;
@@ -35,10 +30,12 @@ public class SearchActivity extends Activity {
     private DynamicXML dynamicXML = new DynamicXML();
     private Map<LinearLayout,Place> linearToPlaceMap;
     private ImageView menu;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user = (User) getIntent().getSerializableExtra(Finals.USER);
         setContentView(R.layout.activity_search);
         linearToPlaceMap = new HashMap<>();
         setIds();
@@ -88,7 +85,7 @@ public class SearchActivity extends Activity {
 
             PlaceView placeView = new PlaceView(this,
                     dynamicXML.createTextView(this,place.getName(),"sans-serif-condensed",20,Color.BLACK,Gravity.TOP,0,0,0,0),
-                    dynamicXML.createImageView(this,place.getImage(),Gravity.CENTER,0,5,0,5),
+                    dynamicXML.createImageView(this,place.getImage(),Gravity.CENTER,0,5,0,5,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT),
                     dynamicXML.createTextView(this,place.getDescription(),"sans-serif-condensed",15,Color.BLACK,Gravity.CENTER,0,0,0,0),
                     place);
             linearToPlaceMap.put(placeView.getCard(),place);
@@ -114,12 +111,15 @@ public class SearchActivity extends Activity {
 
     private void goToAboutPlaceActivity(int pressedPlaceIndex){
         Intent intent = new Intent(this,AboutPlaceActivity.class);
-        intent.putExtra(PlaceDialog.PLACE,pressedPlaceIndex);
+        intent.putExtra(Finals.USER,user);
+        intent.putExtra(Finals.PLACE,pressedPlaceIndex);
         startActivity(intent);
+        finish();
     }
 
     private void goToSideMenuActivity(){
         Intent intent = new Intent(this,SideMenuActivity.class);
+        intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);
@@ -129,8 +129,8 @@ public class SearchActivity extends Activity {
 
         searchedPlaces.clear();
         
-        for(Place place : MapActivity.places){
-            if(place.getName().contains(charSequence)){
+        for(Place place : VisitorMapActivity.places){
+            if(place.getName().toLowerCase().contains(charSequence.toString().toLowerCase())){
                 searchedPlaces.add(place);
             }
         }
