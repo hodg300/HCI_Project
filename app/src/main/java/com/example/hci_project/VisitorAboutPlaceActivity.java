@@ -54,6 +54,7 @@ public class VisitorAboutPlaceActivity extends Activity {
     private void goToInvitationActivity() {
 
         Intent intent = new Intent(this,InvitationActivity.class);
+        intent.putExtra(Finals.USER,user);
         intent.putExtra(Finals.PLACE_INDEX, WaitingActivity.places.indexOf(place));
         startActivity(intent);
     }

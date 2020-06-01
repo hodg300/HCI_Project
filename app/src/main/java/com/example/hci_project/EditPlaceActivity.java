@@ -24,7 +24,7 @@ public class EditPlaceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_place);
-        place = PlaceStateActivity.place;
+        place = OwnerHomeActivity.place;
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         setIds();
         setOnClickListeners();
@@ -58,7 +58,7 @@ public class EditPlaceActivity extends AppCompatActivity {
     }
 
     private void goToOwnerAboutPlaceActivity(){
-        Intent intent = new Intent(this,OwnerAboutPlaceActivity.class);
+        Intent intent = new Intent(this, OwnerHomeActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         finish();

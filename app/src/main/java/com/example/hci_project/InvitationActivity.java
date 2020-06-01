@@ -26,6 +26,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
     private ImageView minusSign;
     private Button confirmBtn;
     private TimePicker timePicker;
+    private User user;
     private int placeIndex;
     private Invitation invitation;
 
@@ -35,6 +36,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invitation);
         placeIndex = getIntent().getIntExtra(Finals.PLACE_INDEX,0);
+        user = (User) getIntent().getSerializableExtra(Finals.USER);
         setIds();
         setInfo();
         setOnClickListeners();
@@ -86,7 +88,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
 
     private void createInvitation() {
 
-         invitation = new Invitation(WaitingActivity.places.get(placeIndex).getName(),
+         invitation = new Invitation(user.firstName + user.lastName,WaitingActivity.places.get(placeIndex).getName(),
                 date.getText().toString(),
                 timePicker.getHour() + ":" +  timePicker.getMinute(),numOfGuests.getText().toString(), WaitingActivity.places.get(placeIndex).getImage());
     }

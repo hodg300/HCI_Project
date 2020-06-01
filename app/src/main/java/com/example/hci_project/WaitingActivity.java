@@ -52,7 +52,7 @@ public class WaitingActivity extends Activity {
                             goToVisitorMapActivity();
                         } else if(user.getRole().equals(Finals.PLACE_OWNER)){
                             //need to change is future
-                            goToPlaceStateActivity();
+                            goToOwnerHomeActivity();
 
                         } else if(user.getRole().equals(Finals.POLICE_OFFICER)){
                             //need to change is future
@@ -60,7 +60,7 @@ public class WaitingActivity extends Activity {
 
                         }else if(user.getRole().equals(Finals.MINISTRY_OF_HEALTH)){
                             //need to change is future
-                            goToVisitorMapActivity();
+                            goToSearchActivity();
 
                         }
                     }
@@ -69,9 +69,17 @@ public class WaitingActivity extends Activity {
         });
     }
 
-    private void goToPlaceStateActivity() {
+    private void goToSearchActivity() {
 
-        Intent intent = new Intent(this, PlaceStateActivity.class);
+        Intent intent = new Intent(this, SearchActivity.class);
+        intent.putExtra(Finals.USER,user);
+        startActivity(intent);
+        finish();
+    }
+
+    private void goToOwnerHomeActivity() {
+
+        Intent intent = new Intent(this, OwnerHomeActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         finish();

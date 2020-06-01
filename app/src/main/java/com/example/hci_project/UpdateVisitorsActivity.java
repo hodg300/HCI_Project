@@ -8,22 +8,23 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.hci_project.Utils.Finals;
 
 import java.time.ZonedDateTime;
 import java.util.Calendar;
 
-public class PlaceStateActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class UpdateVisitorsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-   public static Place place;
-   private TextView placeName;
-   private TextView date;
-   private TextView time;
+
+   private Button date;
+   private Button time;
    private ImageView menu;
    private TextView maxVisitorText;
    private TextView numOfVisitorsText;
@@ -33,15 +34,16 @@ public class PlaceStateActivity extends AppCompatActivity implements DatePickerD
    private int numOfVisitors;
    private int maxNumOfVisitors;
    private User user;
+   boolean dateHasBeenSet = false;
+   boolean timeHasBeenSet = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_place_state);
+        setContentView(R.layout.activity_update_visitors);
 
-        //Can change to any place we want from the list
-        place = WaitingActivity.places.get(1);
+
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         setIds();
         setOnClickListeners();
@@ -54,10 +56,8 @@ public class PlaceStateActivity extends AppCompatActivity implements DatePickerD
 
     private void setInfo() {
 
-        placeName.setText(place.getName());
-        date.setText(ZonedDateTime.now().getDayOfMonth() + " / "  +ZonedDateTime.now().getMonthValue() + " / " + ZonedDateTime.now().getYear());
-        numOfVisitorsText.setText(place.getNumOfVisitors() + "");
-        maxVisitorText.setText(place.getMaxVisitors() + "");
+        numOfVisitorsText.setText(OwnerHomeActivity.place.getNumOfVisitors() + "");
+        maxVisitorText.setText(OwnerHomeActivity.place.getMaxVisitors() + "");
 
         if(Integer.parseInt(numOfVisitorsText.getText().toString()) ==
                 Integer.parseInt(maxVisitorText.getText().toString()
@@ -91,14 +91,14 @@ public class PlaceStateActivity extends AppCompatActivity implements DatePickerD
         plusSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addVisitor();
+               plusButtonHasBeenPressed();
             }
         });
 
         minusSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                subVisitor();
+               minusButtonHasBeenPressed();
             }
         });
 
@@ -111,13 +111,34 @@ public class PlaceStateActivity extends AppCompatActivity implements DatePickerD
 
     }
 
+    private void plusButtonHasBeenPressed(){
+        if(dateHasBeenSet && timeHasBeenSet) {
+            addVisitor();
+        }else {
+            Toast.makeText(this, "You need to choose date and time", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    private void minusButtonHasBeenPressed(){
+
+        if(dateHasBeenSet & timeHasBeenSet) {
+            subVisitor();
+        } else {
+            Toast.makeText(this, "You need to choose date and time", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     private void subVisitor() {
 
          numOfVisitors = Integer.parseInt(numOfVisitorsText.getText().toString());
+         maxNumOfVisitors = Integer.parseInt(maxVisitorText.getText().toString());
 
         if(numOfVisitors > 0){
             numOfVisitors--;
             numOfVisitorsText.setText(numOfVisitors + "");
+            OwnerHomeActivity.place.setNumOfVisitors(numOfVisitors);
         }
 
         if(numOfVisitors < maxNumOfVisitors){
@@ -133,6 +154,7 @@ public class PlaceStateActivity extends AppCompatActivity implements DatePickerD
         if(numOfVisitors < maxNumOfVisitors){
             numOfVisitors++;
             numOfVisitorsText.setText(numOfVisitors + "");
+            OwnerHomeActivity.place.setNumOfVisitors(numOfVisitors);
         }
 
         if(numOfVisitors == maxNumOfVisitors){
@@ -150,7 +172,6 @@ public class PlaceStateActivity extends AppCompatActivity implements DatePickerD
 
     private void setIds() {
 
-        placeName = findViewById(R.id.place_name);
         plusSign = findViewById(R.id.plus_btn);
         minusSign = findViewById(R.id.minus_btn);
         date = findViewById(R.id.date);
@@ -163,7 +184,8 @@ public class PlaceStateActivity extends AppCompatActivity implements DatePickerD
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
 
-        date.setText("Date : " + dayOfMonth +" / " + month + " / " + year);
+        date.setText(dayOfMonth +" / " + month + " / " + year);
+        dateHasBeenSet = true;
     }
 
     private void showDatePickerDialog() {
@@ -193,7 +215,8 @@ public class PlaceStateActivity extends AppCompatActivity implements DatePickerD
 
         String hourText = hour  > 9 ? ""+ hour : "0" + hour;
         String minuteText =  minutes  > 9 ? ""+ minutes : "0" + minutes;
-        time.setText("Time : " + hourText + " : " + minuteText);
+        time.setText(hourText + " : " + minuteText);
+        timeHasBeenSet = true;
 
     }
 }

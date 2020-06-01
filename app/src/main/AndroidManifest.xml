@@ -17,11 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppFullScreenTheme">
-        <activity android:name=".OwnerInvitations"></activity>
+        <activity android:name=".MinistryOfHealthAboutPlaceActivity"></activity>
+        <activity android:name=".OwnerInvitations" />
         <activity android:name=".EditPlaceActivity" />
-        <activity android:name=".OwnerAboutPlaceActivity" />
+        <activity android:name=".OwnerHomeActivity" />
         <activity android:name=".OwnerSideMenuActivity" />
-        <activity android:name=".PlaceStateActivity" />
+        <activity android:name=".UpdateVisitorsActivity" />
         <activity android:name=".InvitationActivity" />
         <activity android:name=".MyInvitationsActivity" />
         <activity android:name=".VisitorSideMenuActivity" />
