@@ -82,12 +82,20 @@ public class SearchActivity extends Activity {
             return;
         }
         for(Place place : searchedPlaces){
-
-            PlaceView placeView = new PlaceView(this,
-                    dynamicXML.createTextView(this,place.getName(),"sans-serif-condensed",20,Color.BLACK,Gravity.TOP,0,0,0,0),
-                    dynamicXML.createImageView(this,place.getImage(),Gravity.CENTER,0,5,0,5,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT),
-                    dynamicXML.createTextView(this,place.getDescription(),"sans-serif-condensed",15,Color.BLACK,Gravity.CENTER,0,0,0,0),
-                    place);
+            PlaceView placeView = null;
+            if(user.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                 placeView = new PlaceView(this,
+                        dynamicXML.createTextView(this, place.getName(), "sans-serif-condensed", 20, Color.BLACK, Gravity.TOP, 0, 0, 0, 0),
+                        dynamicXML.createImageView(this, place.getImage(), Gravity.CENTER, 0, 5, 0, 5, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT),
+                        dynamicXML.createTextView(this, place.getDescription(), "sans-serif-condensed", 15, Color.BLACK, Gravity.CENTER, 0, 0, 0, 0),
+                        place);
+            } else if(user.getRole().toLowerCase().equals(Finals.MINISTRY_OF_HEALTH)){
+                    placeView = new PlaceView(this,
+                        dynamicXML.createTextView(this, place.getName(), "sans-serif-condensed", 20, Color.BLACK, Gravity.TOP, 0, 0, 0, 0),
+                        dynamicXML.createImageView(this, place.getImage(), Gravity.CENTER, 0, 5, 0, 5, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT),
+                        dynamicXML.createTextView(this, place.getNumOfVisitors() + "/" + place.getMaxVisitors(), "sans-serif-condensed", 15, Color.BLACK, Gravity.CENTER, 0, 0, 0, 0),
+                        place);
+            }
             linearToPlaceMap.put(placeView.getCard(),place);
             placesView.add(placeView);
             placesHolder.addView(placeView.getCard());
@@ -102,14 +110,28 @@ public class SearchActivity extends Activity {
         placeView.getCard().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToAboutPlaceActivity(((Place)linearToPlaceMap.get(view)).getIndex());
+                if(user.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                    goToVisitorAboutPlaceActivity(((Place) linearToPlaceMap.get(view)).getIndex());
+                } else if(user.getRole().toLowerCase().equals(Finals.MINISTRY_OF_HEALTH)){
+                    goToMinistryOfHealthAboutPlaceActivity(((Place) linearToPlaceMap.get(view)).getIndex());
+                }
             }
         });
 
 
     }
 
-    private void goToAboutPlaceActivity(int pressedPlaceIndex){
+    private void goToMinistryOfHealthAboutPlaceActivity(int pressedPlaceIndex) {
+
+        Intent intent = new Intent(this, MinistryOfHealthAboutPlaceActivity.class);
+        intent.putExtra(Finals.USER,user);
+        intent.putExtra(Finals.PLACE_INDEX,pressedPlaceIndex);
+        startActivity(intent);
+        finish();
+        
+    }
+
+    private void goToVisitorAboutPlaceActivity(int pressedPlaceIndex){
         Intent intent = new Intent(this, VisitorAboutPlaceActivity.class);
         intent.putExtra(Finals.USER,user);
         intent.putExtra(Finals.PLACE,pressedPlaceIndex);

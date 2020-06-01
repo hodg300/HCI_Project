@@ -27,7 +27,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private GoogleMap map;
     private ImageView search_btn;
-
     public static ArrayList<Invitation> invitations = new ArrayList<>();
     public static User currentUser;
     private Button clock;

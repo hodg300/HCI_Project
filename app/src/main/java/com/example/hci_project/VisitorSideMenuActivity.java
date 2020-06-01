@@ -14,6 +14,7 @@ public class VisitorSideMenuActivity extends Activity {
     private TextView nameOfUser;
     private TextView myInvitations;
     private TextView settings;
+    private TextView home;
     private TextView logOut;
     private ImageView back;
     private de.hdodenhof.circleimageview.CircleImageView image;
@@ -59,7 +60,21 @@ public class VisitorSideMenuActivity extends Activity {
                 goToLastActivity();
             }
         });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMapActivity();
+            }
+        });
 
+    }
+
+    private void goToMapActivity() {
+
+        Intent intent = new Intent(this,MapActivity.class);
+        intent.putExtra(Finals.USER, user);
+        startActivity(intent);
+        finish();
     }
 
     private void goToLastActivity(){
@@ -102,6 +117,7 @@ public class VisitorSideMenuActivity extends Activity {
         back = findViewById(R.id.back);
         nameOfUser = findViewById(R.id.name_of_user);
         image = findViewById(R.id.profile_image);
+        home = findViewById(R.id.home);
 
     }
 }

@@ -60,13 +60,21 @@ public class WaitingActivity extends Activity {
 
                         }else if(user.getRole().equals(Finals.MINISTRY_OF_HEALTH)){
                             //need to change is future
-                            goToVisitorMapActivity();
+                            goToSearchActivity();
 
                         }
                     }
                 }, milliseconds);
             }
         });
+    }
+
+    private void goToSearchActivity() {
+
+        Intent intent = new Intent(this, SearchActivity.class);
+        intent.putExtra(Finals.USER,user);
+        startActivity(intent);
+        finish();
     }
 
     private void goToOwnerHomeActivity() {

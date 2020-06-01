@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,11 +16,14 @@ import android.widget.TextView;
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
 
-public class OwnerHomeActivity extends AppCompatActivity {
+public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
 
-    private Button closeBtn;
-    private Button updateBtn;
-    private ImageView editPlace;
+    private Button closePlaceBtn;
+    private Button updateMaxVisitorsBtn;
+    private Button policeReportsBtn;
+    private DynamicXML dynamicXML = new DynamicXML();
+    private Place place;
+    private User user;
     private ImageView imagePlace;
     private ImageView menu;
     private TextView nameOfPlace;
@@ -30,18 +32,12 @@ public class OwnerHomeActivity extends AppCompatActivity {
     private TextView maxNumOfVisitors;
     private TextView openHour;
     private TextView cuisines;
-    private User user;
-    private DynamicXML dynamicallyXML;
-    public static Place place;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dynamicallyXML = new DynamicXML();
-        setContentView(R.layout.activity_owner_home);
-        //Can change to any place we want from the list
-        place = WaitingActivity.places.get(1);
+        setContentView(R.layout.activity_ministry_of_health_about_place);
+        place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE_INDEX,0));
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         setIds();
         setOnClickListeners();
@@ -60,18 +56,53 @@ public class OwnerHomeActivity extends AppCompatActivity {
 
         if(Integer.parseInt(numOfVisitors.getText().toString()) ==
                 Integer.parseInt(maxNumOfVisitors.getText().toString()
-        )){
+                )){
             numOfVisitors.setTextColor(Color.RED);
 
         }else {
             numOfVisitors.setTextColor(Color.rgb(63, 135, 0));
         }
+    }
 
+    private void setOnClickListeners() {
+
+        closePlaceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closePlace();
+            }
+        });
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMinistryOfHealthSideMenuActivity();
+            }
+        });
+        updateMaxVisitorsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToUpdateMaxVisitorsDialog();
+            }
+        });
+
+    }
+
+
+    private void goToUpdateMaxVisitorsDialog() {
+
+        UpdateMaxVisitorsDialog dialog = new UpdateMaxVisitorsDialog(place,user);
+        dialog.show(getSupportFragmentManager(),"CarPickerDialog");
+    }
+
+    private void goToMinistryOfHealthSideMenuActivity() {
     }
 
     private void setIds() {
 
-        menu =  findViewById(R.id.menu);
+        menu = findViewById(R.id.menu);
+        closePlaceBtn = findViewById(R.id.close_place_btn);
+        updateMaxVisitorsBtn = findViewById(R.id.update_btn);
+        policeReportsBtn = findViewById(R.id.police_reports_btn);
         imagePlace  = findViewById(R.id.image_place);
         nameOfPlace = findViewById(R.id.place_name);
         description =  findViewById(R.id.description_text);
@@ -79,62 +110,10 @@ public class OwnerHomeActivity extends AppCompatActivity {
         maxNumOfVisitors = findViewById(R.id.max_visitors);
         openHour = findViewById(R.id.hours);
         cuisines = findViewById(R.id.cuisines_type);
-        closeBtn = findViewById(R.id.close_place_btn);
-        editPlace = findViewById(R.id.edit_place);
-        updateBtn = findViewById(R.id.update_btn);
-
-    }
-
-    private void setOnClickListeners() {
-
-        closeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                closePlace();
-            }
-        });
-        editPlace.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToEditPlaceActivity();
-            }
-        });
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToOwnerSideMenuActivity();
-            }
-        });
-        updateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToUpdateVisitorsActivity();
-            }
-        });
-    }
-
-    private void goToUpdateVisitorsActivity() {
-        Intent intent = new Intent(this, UpdateVisitorsActivity.class);
-        intent.putExtra(Finals.USER, user);
-        startActivity(intent);
-    }
-
-    private void goToOwnerSideMenuActivity() {
-            Intent intent = new Intent(this, OwnerSideMenuActivity.class);
-            intent.putExtra(Finals.USER, user);
-            startActivity(intent);
-            this.overridePendingTransition(R.anim.left_to_right,
-                    R.anim.right_to_left);
-    }
-
-    private void goToEditPlaceActivity() {
-        Intent intent = new Intent(this,EditPlaceActivity.class);
-        intent.putExtra(Finals.USER,user);
-        startActivity(intent);
     }
 
     private void closePlace() {
-        if(closeBtn.getText().toString().toLowerCase().equals("open place")){
+        if(closePlaceBtn.getText().toString().toLowerCase().equals("open place")){
             changeOpenCloseButton("Close Place",R.drawable.close_button_shape);
         } else {
             popUpAlertDialog();
@@ -144,8 +123,8 @@ public class OwnerHomeActivity extends AppCompatActivity {
 
     private void popUpAlertDialog() {
 
-        TextView alertMessage = dynamicallyXML.createTextView(this,
-                "Any invitations to this place will be dismissed.",
+        TextView alertMessage = dynamicXML.createTextView(this,
+                "Closing this place will block from other visitors to invite reservation",
                 "sans-serif-condensed",15, Color.BLACK, Gravity.CENTER,
                 0,0,0,0);
         alertMessage.setPadding(40,40,40,40);
@@ -158,7 +137,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @TargetApi(11)
                             public void onClick(DialogInterface dialog, int id) {
-                                changeOpenCloseButton("Open\nPlace", R.drawable.open_button_shape);
+                                changeOpenCloseButton("Open\n Place", R.drawable.open_button_shape);
                             }
                         })
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -171,7 +150,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
 
     private void changeOpenCloseButton(String title,int backgroundResource) {
 
-        closeBtn.setText(title);
-        closeBtn.setBackgroundResource(backgroundResource);
+        closePlaceBtn.setText(title);
+        closePlaceBtn.setBackgroundResource(backgroundResource);
     }
 }

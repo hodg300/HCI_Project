@@ -52,15 +52,27 @@
         android:layout_height="1dp"
         android:background="@color/darkGray" />
 
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:layout_below="@id/horizontal_line"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
 
-        <TextView
+
+
+    <TextView
             android:id="@+id/my_invitations_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="my invitations"
-            android:layout_below="@id/horizontal_line"
+            android:layout_below="@id/home"
             android:fontFamily="sans-serif-smallcaps"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:textStyle="bold"
             android:textSize="25dp"/>
