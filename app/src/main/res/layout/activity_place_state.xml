@@ -35,43 +35,34 @@
         android:textStyle="bold"
         android:textSize="40dp"/>
 
-    <ImageView
-        android:id="@+id/clock"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/place_name"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/ic_clock"
-        />
 
     <LinearLayout
         android:id="@+id/counter_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/clock"
+        android:layout_below="@id/place_name"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         >
 
         <ImageView
             android:id="@+id/plus_btn"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_below="@id/place_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/ic_plus_sign"
             />
 
         <ImageView
             android:id="@+id/minus_btn"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_below="@id/place_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/ic_minus_sign"
             />
     </LinearLayout>
@@ -83,28 +74,6 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/counter_container"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date : 20/2/20"
-            android:gravity="center"
-            android:fontFamily="sans-serif-smallcaps"
-            android:layout_margin = "5dp"
-            android:textStyle="bold"
-            android:textSize="30dp"/>
-
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Time : 15:41"
-            android:gravity="center"
-            android:fontFamily="sans-serif-smallcaps"
-            android:layout_margin = "5dp"
-            android:textStyle="bold"
-            android:textSize="30dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -120,21 +89,81 @@
                 android:fontFamily="sans-serif-smallcaps"
                 android:layout_margin = "5dp"
                 android:textStyle="bold"
-                android:textSize="30dp"/>
+                android:textSize="25dp"/>
 
             <TextView
                 android:id="@+id/visitors_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="54 "
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center"
+                android:text="54"
+                android:textColor="@color/lighGreen"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center"
+                android:text="/"
+
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/max_visitors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="100"
                 android:gravity="center"
                 android:fontFamily="sans-serif-smallcaps"
                 android:layout_margin = "5dp"
                 android:textStyle="bold"
-                android:textColor="@color/lighGreen"
-                android:textSize="30dp"/>
+                android:textSize="25dp"/>
 
         </LinearLayout>
+
+        android:textSize="30dp"/>
+
+        <View
+            android:id="@+id/horizontal_line"
+            android:layout_below="@id/settings_title"
+            android:layout_marginVertical="10dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="1dp"
+            android:background="@color/darkGray" />
+
+
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date : 20/2/20"
+            android:gravity="center"
+            android:fontFamily="sans-serif-smallcaps"
+            android:layout_margin = "5dp"
+            android:textStyle="bold"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time : 15:41"
+            android:gravity="center"
+            android:fontFamily="sans-serif-smallcaps"
+            android:layout_margin = "5dp"
+            android:textStyle="bold"
+            android:textSize="25dp"/>
+
+
 
 
     </LinearLayout>

@@ -42,7 +42,7 @@ public class MyInvitationsActivity extends Activity {
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this,SideMenuActivity.class);
+        Intent intent = new Intent(this, VisitorSideMenuActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,

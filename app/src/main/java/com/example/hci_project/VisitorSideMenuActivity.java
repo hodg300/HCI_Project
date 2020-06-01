@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
 
-public class SideMenuActivity extends Activity {
+public class VisitorSideMenuActivity extends Activity {
 
     private TextView nameOfUser;
     private TextView myInvitations;
@@ -22,7 +22,7 @@ public class SideMenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_side_menu);
+        setContentView(R.layout.activity_visitor_side_menu);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         setIds();
         setDetails();

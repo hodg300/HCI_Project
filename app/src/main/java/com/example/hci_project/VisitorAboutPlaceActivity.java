@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
 
-public class AboutPlaceActivity extends Activity {
+public class VisitorAboutPlaceActivity extends Activity {
     final String CURRENT_VISITORS = "Current visitors: ";
     private Place place;
     private ImageView imagePlace;
@@ -27,9 +27,9 @@ public class AboutPlaceActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_place);
+        setContentView(R.layout.activity_visitor_about_place);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
-        place = MapActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
+        place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
         setIds();
         setTextOnViews();
         setOnClickListeners();
@@ -54,12 +54,12 @@ public class AboutPlaceActivity extends Activity {
     private void goToInvitationActivity() {
 
         Intent intent = new Intent(this,InvitationActivity.class);
-        intent.putExtra(Finals.PLACE_INDEX, MapActivity.places.indexOf(place));
+        intent.putExtra(Finals.PLACE_INDEX, WaitingActivity.places.indexOf(place));
         startActivity(intent);
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this,SideMenuActivity.class);
+        Intent intent = new Intent(this, VisitorSideMenuActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         intent.putExtra(Finals.USER,user);
