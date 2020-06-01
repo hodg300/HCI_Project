@@ -32,7 +32,7 @@ public class SettingsActivity extends Activity {
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this,SideMenuActivity.class);
+        Intent intent = new Intent(this, VisitorSideMenuActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
@@ -57,6 +57,7 @@ public class SettingsActivity extends Activity {
 
     private void goToPersonalInfoActivity(){
         Intent intent = new Intent(this,PersonalInfoActivity.class);
+        intent.putExtra(Finals.USER,user);
         startActivity(intent);
     }
 }

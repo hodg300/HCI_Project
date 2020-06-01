@@ -110,7 +110,7 @@ public class SearchActivity extends Activity {
     }
 
     private void goToAboutPlaceActivity(int pressedPlaceIndex){
-        Intent intent = new Intent(this,AboutPlaceActivity.class);
+        Intent intent = new Intent(this, VisitorAboutPlaceActivity.class);
         intent.putExtra(Finals.USER,user);
         intent.putExtra(Finals.PLACE,pressedPlaceIndex);
         startActivity(intent);
@@ -118,7 +118,7 @@ public class SearchActivity extends Activity {
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this,SideMenuActivity.class);
+        Intent intent = new Intent(this, VisitorSideMenuActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
@@ -129,7 +129,7 @@ public class SearchActivity extends Activity {
 
         searchedPlaces.clear();
         
-        for(Place place : MapActivity.places){
+        for(Place place : WaitingActivity.places){
             if(place.getName().toLowerCase().contains(charSequence.toString().toLowerCase())){
                 searchedPlaces.add(place);
             }

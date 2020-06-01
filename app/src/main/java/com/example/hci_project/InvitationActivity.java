@@ -86,9 +86,9 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
 
     private void createInvitation() {
 
-         invitation = new Invitation(MapActivity.places.get(placeIndex).getName(),
+         invitation = new Invitation(WaitingActivity.places.get(placeIndex).getName(),
                 date.getText().toString(),
-                timePicker.getHour() + ":" +  timePicker.getMinute(),numOfGuests.getText().toString(), MapActivity.places.get(placeIndex).getImage());
+                timePicker.getHour() + ":" +  timePicker.getMinute(),numOfGuests.getText().toString(), WaitingActivity.places.get(placeIndex).getImage());
     }
 
     private void showDatePickerDialog() {
@@ -104,7 +104,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
 
     private void setInfo() {
 
-        header.setText(MapActivity.places.get(placeIndex).getName());
+        header.setText(WaitingActivity.places.get(placeIndex).getName());
         date.setText(ZonedDateTime.now().getDayOfMonth() + " / "  +ZonedDateTime.now().getMonthValue() + " / " + ZonedDateTime.now().getYear());
     }
 

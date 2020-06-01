@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".SideMenuActivity">
+    tools:context=".OwnerSideMenuActivity">
 
     <FrameLayout
         android:layout_centerHorizontal="true"
@@ -29,7 +29,7 @@
             android:layout_marginRight="10dp"
             android:layout_gravity="right"/>
     </FrameLayout>
-        <requestFocus />
+    <requestFocus />
     <TextView
         android:id="@+id/name_of_user"
         android:layout_width="wrap_content"
@@ -53,36 +53,58 @@
         android:background="@color/darkGray" />
 
 
-        <TextView
-            android:id="@+id/my_invitations_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="my invitations"
-            android:layout_below="@id/horizontal_line"
-            android:fontFamily="sans-serif-smallcaps"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:textStyle="bold"
-            android:textSize="25dp"/>
+    <TextView
+        android:id="@+id/state_of_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="State of place"
+        android:layout_below="@id/horizontal_line"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
 
 
     <TextView
-        android:id="@+id/settings_title"
+        android:id="@+id/all_invitations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="settings"
+        android:text="All invitations"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_below="@id/my_invitations_title"
+        android:layout_below="@id/state_of_place"
         android:layout_marginLeft="15dp"
         android:textStyle="bold"
         android:textSize="25dp"/>
     <TextView
-        android:id="@+id/logout_title"
+        android:id="@+id/about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="log out"
+        android:text="About"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_below="@id/settings_title"
+        android:layout_below="@id/all_invitations"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:id="@+id/settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_below="@id/about"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_below="@id/settings"
         android:layout_marginLeft="15dp"
         android:textStyle="bold"
         android:textSize="25dp"/>

@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,27 +17,24 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap map;
     private ImageView search_btn;
-    public static ArrayList<Place> places = new ArrayList<>();
+
     public static ArrayList<Invitation> invitations = new ArrayList<>();
     public static User currentUser;
     private Button clock;
     private ImageView menu;
     private int hours;
     private int minutes;
-    private Date dt = new Date();
-
+    private Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         currentUser = (User) getIntent().getSerializableExtra(Finals.USER);
         mapFragment.getMapAsync(this);
         setIds();
-        createLocations();
         setOnClickListeners();
         changeTime();
     }
@@ -72,9 +69,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     }
 
     private void changeTime(){
+
+        Log.d("TIME", "im here on changeTime: ");
         // current time
-        hours = dt.getHours();     // gets the current houre
-        minutes = dt.getMinutes(); //get the current minutes
+
+       hours = calendar.get(Calendar.HOUR_OF_DAY);
+        minutes = calendar.get(Calendar.MINUTE);
         clock.setText(hours +":" + minutes);
     }
 
@@ -96,7 +96,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this,SideMenuActivity.class);
+        Intent intent = new Intent(this, VisitorSideMenuActivity.class);
         intent.putExtra(Finals.USER, currentUser);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
@@ -115,30 +115,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         menu = findViewById(R.id.menu);
     }
 
-    private void createLocations() {
-
-        //החוג הצפוני
-        places.add(new Place("HaHoog Hatzfoni",R.drawable.ahug_hatsfoni_img,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
-                new LatLng(32.113611, 34.801954),126,false,200,
-                "10:00 - 23:00","Students israeli bar", 0));
-        //שגב אקספרס
-        places.add(new Place("Segev Express",R.drawable.segev_express_img,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                ,new LatLng(32.1100635,34.843054),250,true,250,
-                "18:00 - 04:00","Italian kitchen", 1));
-        //סוסו אנד סאנס
-        places.add(new Place("Susu and Sons",R.drawable.susu_and_sons_img,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                new LatLng(32.0368665,34.9649833),121,false,130,
-                "16:00 - 03:00","Texas hamburger", 2));
-        //מוזיאון תל אביב
-        places.add(new Place("Tel Aviv Museum",R.drawable.tel_aviv_museum,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                ,new LatLng(32.0938103,34.8110533),500,true,500,
-                "08:00 - 15:00","Legacy of Israel", 3));
-
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -147,18 +123,18 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         googleMap.setOnMarkerClickListener(this);
 
         //aHug Hatzfoni
-        places.get(0).setMarker(map.addMarker(new MarkerOptions().position(places.get(0).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+        WaitingActivity.places.get(0).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(0).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
         //Segev Expresss
-        places.get(1).setMarker(map.addMarker(new MarkerOptions().position(places.get(1).getLatlng())));
+        WaitingActivity.places.get(1).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(1).getLatlng())));
         //Susu and Sons
-        places.get(2).setMarker(map.addMarker(new MarkerOptions().position(places.get(2).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+        WaitingActivity.places.get(2).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(2).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
         //Tel Aviv musium
-        places.get(3).setMarker(map.addMarker(new MarkerOptions().position(places.get(3).getLatlng())));
+        WaitingActivity.places.get(3).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(3).getLatlng())));
 
 
         //Move Camera to Segev EXPRESS
         CameraUpdate zoom=CameraUpdateFactory.zoomTo(14);
-        map.moveCamera(CameraUpdateFactory.newLatLng(places.get(1).getLatlng()));
+        map.moveCamera(CameraUpdateFactory.newLatLng(WaitingActivity.places.get(1).getLatlng()));
         map.animateCamera(zoom);
 
 
@@ -168,19 +144,19 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     public boolean onMarkerClick(Marker marker) {
 
 
-        if (places.get(0).getMarker().equals(marker)){
+        if (WaitingActivity.places.get(0).getMarker().equals(marker)){
             //החוג הצפוני
-            openPlaceDialog(places.get(0));
-        } else if(places.get(1).getMarker().equals(marker)){
+            openPlaceDialog(WaitingActivity.places.get(0));
+        } else if(WaitingActivity.places.get(1).getMarker().equals(marker)){
             //שגב אקספרס
-            openPlaceDialog(places.get(1));
-        } else if(places.get(2).getMarker().equals(marker)){
+            openPlaceDialog(WaitingActivity.places.get(1));
+        } else if(WaitingActivity.places.get(2).getMarker().equals(marker)){
             //סוסו אנד סאנס
-            openPlaceDialog(places.get(2));
+            openPlaceDialog(WaitingActivity.places.get(2));
 
-        }else if(places.get(3).getMarker().equals(marker)){
+        }else if(WaitingActivity.places.get(3).getMarker().equals(marker)){
             //מוזיאון תל אביב
-            openPlaceDialog(places.get(3));
+            openPlaceDialog(WaitingActivity.places.get(3));
         }
 
         return true;
