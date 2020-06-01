@@ -81,6 +81,7 @@ public class PlaceDialog extends DialogFragment {
 
         Intent intent = new Intent(getContext(),InvitationActivity.class);
         intent.putExtra(Finals.PLACE_INDEX, WaitingActivity.places.indexOf(place));
+        intent.putExtra(Finals.USER,user);
         startActivity(intent);
         getDialog().dismiss();
     }

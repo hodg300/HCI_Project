@@ -12,11 +12,11 @@ import com.example.hci_project.Utils.Finals;
 public class OwnerSideMenuActivity extends Activity {
 
     private TextView nameOfUser;
-    private TextView stateOfPlace;
+    private TextView updateVisitors;
     private TextView settings;
     private TextView logOut;
     private TextView allInvitations;
-    private TextView about;
+    private TextView home;
     private ImageView back;
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
@@ -38,10 +38,10 @@ public class OwnerSideMenuActivity extends Activity {
 
     private void setOnClickListeners() {
 
-        stateOfPlace.setOnClickListener(new View.OnClickListener() {
+        updateVisitors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToPlaceStateActivity();
+                goToUpdateVisitorsActivity();
             }
         });
 
@@ -52,7 +52,7 @@ public class OwnerSideMenuActivity extends Activity {
             }
         });
 
-        about.setOnClickListener(new View.OnClickListener() {
+        home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToAboutActivity();
@@ -81,22 +81,28 @@ public class OwnerSideMenuActivity extends Activity {
 
     private void goToAboutActivity() {
 
-        Intent intent = new Intent(this,OwnerAboutPlaceActivity.class);
+        Intent intent = new Intent(this, OwnerHomeActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         finish();
 
     }
 
-    private void goToPlaceStateActivity() {
+    private void goToUpdateVisitorsActivity() {
 
-        Intent intent = new Intent(this,PlaceStateActivity.class);
+        Intent intent = new Intent(this, UpdateVisitorsActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         finish();
     }
 
     private void goToAllInvitationsActivity() {
+
+        Intent intent = new Intent(this,OwnerInvitations.class);
+        intent.putExtra(Finals.USER,user);
+        startActivity(intent);
+        finish();
+
     }
 
     private void goToLastActivity(){
@@ -128,8 +134,8 @@ public class OwnerSideMenuActivity extends Activity {
     private void setIds() {
 
         allInvitations = findViewById(R.id.all_invitations);
-        about = findViewById(R.id.about);
-        stateOfPlace = findViewById(R.id.state_of_place);
+        home = findViewById(R.id.home);
+        updateVisitors = findViewById(R.id.update_visitors);
         settings = findViewById(R.id.settings);
         logOut = findViewById(R.id.logout);
         back = findViewById(R.id.back);

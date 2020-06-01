@@ -16,7 +16,7 @@ import com.example.hci_project.Views.InvitationView;
 
 public class MyInvitationsActivity extends Activity {
 
-    public static LinearLayout invitationsHolder;
+    private LinearLayout invitationsHolder;
     private ImageView menu;
     private DynamicXML dynamicXML;
     private User user;
@@ -47,7 +47,6 @@ public class MyInvitationsActivity extends Activity {
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);
-        finish();
     }
 
     private void setIds() {
@@ -75,7 +74,8 @@ public class MyInvitationsActivity extends Activity {
                     this,
                     dynamicXML.createTextView(this,invitation.getNameOfPlace(),"sans-serif-condensed",20,Color.BLACK,Gravity.TOP,0,0,0,0),
                     dynamicXML.createImageView(this,invitation.getImage(),Gravity.CENTER,0,5,0,5,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT),
-                    dynamicXML.createTextView(this,invitationInfoString,"sans-serif-condensed",15,Color.BLACK,Gravity.CENTER,0,0,0,0)
+                    dynamicXML.createTextView(this,invitationInfoString,"sans-serif-condensed",15,Color.BLACK,Gravity.CENTER,0,0,0,0),invitationsHolder,
+                    MapActivity.invitations, invitation.getNameOfPlace()
             );
 
             invitationsHolder.addView(invitationView.getCard());

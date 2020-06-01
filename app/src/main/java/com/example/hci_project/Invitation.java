@@ -4,13 +4,15 @@ import java.io.Serializable;
 
 public class Invitation implements Serializable {
 
+    private String nameOfVisitor;
     private String nameOfPlace;
     private String Date;
     private String hour;
     private String numOfGuests;
     private int image;
 
-    public Invitation(String nameOfPlace, String date, String hour, String numOfGuests, int image) {
+    public Invitation(String nameOfVisitor,String nameOfPlace, String date, String hour, String numOfGuests, int image) {
+        this.nameOfVisitor = nameOfVisitor;
         this.nameOfPlace = nameOfPlace;
         Date = date;
         this.hour = hour;
@@ -56,5 +58,13 @@ public class Invitation implements Serializable {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public String getNameOfVisitor() {
+        return nameOfVisitor;
+    }
+
+    public void setNameOfVisitor(String nameOfVisitor) {
+        this.nameOfVisitor = nameOfVisitor;
     }
 }

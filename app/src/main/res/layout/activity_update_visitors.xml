@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateVisitorsActivity">
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/cardview_shadow_start_color">
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:id="@+id/menu"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_menu" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/update_visitors_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Visitors"
+        android:layout_below="@id/linear_layout"
+        android:gravity="center"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_margin = "20dp"
+        android:textStyle="bold"
+        android:textSize="40dp"/>
+
+    <View
+        android:id="@+id/horizontal_line"
+        android:layout_below="@id/update_visitors_title"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"
+        android:background="@color/darkGray" />
+
+
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/update_visitors_title"
+        android:orientation="vertical">
+
+
+
+        <Button
+            android:id="@+id/date"
+            android:layout_width="200dp"
+            android:background="@drawable/pick_btn_shape"
+            android:layout_height="wrap_content"
+            android:text="Choose Date"
+            android:gravity="center"
+            android:fontFamily="sans-serif-smallcaps"
+            android:layout_margin = "5dp"
+            android:textStyle="bold"
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/time"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pick_btn_shape"
+            android:text="Choose Hour"
+            android:gravity="center"
+            android:fontFamily="sans-serif-smallcaps"
+            android:layout_margin = "5dp"
+            android:textStyle="bold"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/info_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_container"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/visitors_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visitors : "
+            android:fontFamily="sans-serif-smallcaps"
+            android:layout_margin = "5dp"
+            android:textStyle="bold"
+
+            android:textSize="25dp"/>
+
+        <TextView
+            android:id="@+id/visitors_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="54"
+            android:textColor="@color/lightGreen"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/slash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="/"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/max_visitors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="200"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/counter_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/info_container"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        >
+
+        <ImageView
+            android:id="@+id/minus_btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/place_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ic_minus_sign"
+            />
+
+        <ImageView
+            android:id="@+id/plus_btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/place_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_plus_sign"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

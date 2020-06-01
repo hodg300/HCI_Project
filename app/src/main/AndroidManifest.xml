@@ -19,9 +19,9 @@
         android:theme="@style/AppFullScreenTheme">
         <activity android:name=".OwnerInvitations"></activity>
         <activity android:name=".EditPlaceActivity" />
-        <activity android:name=".OwnerAboutPlaceActivity" />
+        <activity android:name=".OwnerHomeActivity" />
         <activity android:name=".OwnerSideMenuActivity" />
-        <activity android:name=".PlaceStateActivity" />
+        <activity android:name=".UpdateVisitorsActivity" />
         <activity android:name=".InvitationActivity" />
         <activity android:name=".MyInvitationsActivity" />
         <activity android:name=".VisitorSideMenuActivity" />
