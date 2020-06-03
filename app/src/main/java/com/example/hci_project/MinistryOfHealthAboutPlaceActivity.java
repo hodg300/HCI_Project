@@ -1,7 +1,9 @@
 package com.example.hci_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
@@ -18,7 +20,7 @@ import com.example.hci_project.Utils.Finals;
 
 public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
 
-    private Button closePlaceBtn;
+    public static Button closePlaceBtn;
     private Button updateMaxVisitorsBtn;
     private Button policeReportsBtn;
     private DynamicXML dynamicXML = new DynamicXML();
@@ -69,7 +71,12 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
         closePlaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                closePlace();
+                if(closePlaceBtn.getText().toString().toLowerCase().equals("close place")) {
+                    ClosePlaceDialog dialog = new ClosePlaceDialog(place, user);
+                    dialog.show(getSupportFragmentManager(), "CarPickerDialog");
+                } else {
+                    changeOpenCloseButton("Close Place",R.drawable.close_button_shape);
+                }
             }
         });
         menu.setOnClickListener(new View.OnClickListener() {
@@ -112,45 +119,19 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
         cuisines = findViewById(R.id.cuisines_type);
     }
 
-    private void closePlace() {
+    public static void closePlace() {
         if(closePlaceBtn.getText().toString().toLowerCase().equals("open place")){
             changeOpenCloseButton("Close Place",R.drawable.close_button_shape);
         } else {
-            popUpAlertDialog();
+            changeOpenCloseButton("Open Place",R.drawable.open_button_shape);
         }
 
     }
-
-    private void popUpAlertDialog() {
-
-        TextView alertMessage = dynamicXML.createTextView(this,
-                "Closing this place will block from other visitors to invite reservation",
-                "sans-serif-condensed",15, Color.BLACK, Gravity.CENTER,
-                0,0,0,0);
-        alertMessage.setPadding(40,40,40,40);
-
-        new AlertDialog.Builder(this)
-                .setTitle("Are you sure?")
-                .setView(alertMessage)
-                .setIcon(R.drawable.ic_warning_sign)
-                .setPositiveButton("YES",
-                        new DialogInterface.OnClickListener() {
-                            @TargetApi(11)
-                            public void onClick(DialogInterface dialog, int id) {
-                                changeOpenCloseButton("Open\n Place", R.drawable.open_button_shape);
-                            }
-                        })
-                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @TargetApi(11)
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
-                }).show();
-
-    }
-
-    private void changeOpenCloseButton(String title,int backgroundResource) {
+    public static void changeOpenCloseButton(String title,int backgroundResource) {
 
         closePlaceBtn.setText(title);
         closePlaceBtn.setBackgroundResource(backgroundResource);
     }
+
+
 }

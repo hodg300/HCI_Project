@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@drawable/not_full_dialog_rounded_bg"
+    android:layout_height="wrap_content"
+    >
+
+    <TextView
+        android:id="@+id/close_place_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close Place"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_margin = "20dp"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+
+    <View
+        android:id="@+id/horizontal_line"
+        android:layout_below="@id/close_place_title"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/darkGray" />
+
+
+        <Button
+            android:layout_below="@id/horizontal_line"
+            android:id="@+id/from"
+            android:layout_width="200dp"
+            android:background="@drawable/pick_btn_shape"
+            android:layout_height="wrap_content"
+            android:text="From"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-smallcaps"
+            android:layout_margin = "5dp"
+            android:textStyle="bold"
+            android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/days_of_closing_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/from"
+        android:layout_centerHorizontal="true"
+        android:text="For how many days: "
+        android:gravity="center"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/num_of_days"
+            android:layout_below="@id/days_of_closing_text"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/minus_box"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_minus_sign" />
+            <TextView
+                android:id="@+id/num_of_days_text"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/minus_box"
+                android:text="1"
+                android:gravity="center"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <ImageView
+                android:id="@+id/plus_box"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/num_of_days_text"
+                android:background="@drawable/ic_plus_sign" />
+        </RelativeLayout>
+
+    <EditText
+        android:id="@+id/reason_of_close"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/num_of_days"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        android:maxLines="4"
+        android:hint="Write the reason of close here"
+        android:text="Lorem Ipsum isof Letraset sheets containing Lorem Ipsum passages, and more recentlyaker including versions of Lorem Ipsum."
+        android:gravity="center"
+        android:background="@drawable/edit_text_shape_blue"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-smallcaps"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/reason_of_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="confirm`"
+            android:background="@drawable/accept_button_shape"/>
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="cancel"
+            android:background="@drawable/denied_button_shape"/>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
