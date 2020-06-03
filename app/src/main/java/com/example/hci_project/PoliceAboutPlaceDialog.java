@@ -20,14 +20,14 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.hci_project.Utils.Finals;
 
-public class PlaceDialog extends DialogFragment {
+public class PoliceAboutPlaceDialog extends DialogFragment {
 
     private RelativeLayout restaurantContainer;
     private TextView nameOfRestaurantTV;
     private TextView currentVisitorsTV;
     private ImageView restaurantImg;
     private ImageView infoImg;
-    private Button inviteButton;
+    private Button reportBtn;
     private Button stateOfPlace;
     private Place place;
     private User user;
@@ -36,7 +36,7 @@ public class PlaceDialog extends DialogFragment {
 
 
 
-    public PlaceDialog(Place place,User user) {
+    public PoliceAboutPlaceDialog(Place place,User user) {
 
         this.place = place;
         this.user = user;
@@ -45,7 +45,7 @@ public class PlaceDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_place,container, false);
+        View view = inflater.inflate(R.layout.dialog_police_about_place,container, false);
 
         setIds(view);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -58,38 +58,39 @@ public class PlaceDialog extends DialogFragment {
     }
 
     private void setOnClickListeners() {
+
         infoImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                goToAboutPlaceActivity();
+                goToPoliceAboutPlaceActivity();
             }
         });
 
-        inviteButton.setOnClickListener(new View.OnClickListener() {
+        reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                goToInvitationActivity();
+                goToFillReportActivity();
             }
         });
     }
 
-    private void goToInvitationActivity() {
+    private void goToFillReportActivity() {
 
         Log.d("TEST", place.getName());
 
-        Intent intent = new Intent(getContext(),InvitationActivity.class);
+        Intent intent = new Intent(getContext(),FillReportActivity.class);
         intent.putExtra(Finals.PLACE_INDEX, WaitingActivity.places.indexOf(place));
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         getDialog().dismiss();
     }
 
-    private void goToAboutPlaceActivity(){
+    private void goToPoliceAboutPlaceActivity(){
 
         Log.d("TEST", "user name " + user.firstName);
-        Intent intent = new Intent(getContext(), VisitorAboutPlaceActivity.class);
+        Intent intent = new Intent(getContext(), PoliceAboutPlaceActivity.class);
         intent.putExtra(Finals.PLACE, WaitingActivity.places.indexOf(place));
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
@@ -101,7 +102,6 @@ public class PlaceDialog extends DialogFragment {
         if(place.isFull()){
             stateOfPlace.setBackgroundResource(R.drawable.denied_button_shape);
             restaurantContainer.setBackgroundResource(R.drawable.full_dialog_rounded_bg);
-            inviteButton.setText(inviteButton.getText() + " for other time");
             stateOfPlace.setText("this place is currently full");
 
         } else {
@@ -125,7 +125,7 @@ public class PlaceDialog extends DialogFragment {
         currentVisitorsTV = view.findViewById(R.id.current_visitors_tv);
         restaurantImg = view.findViewById(R.id.img_of_restaurant);
         infoImg = view.findViewById(R.id.info);
-        inviteButton = view.findViewById(R.id.invite_btn);
+        reportBtn = view.findViewById(R.id.report_place);
         stateOfPlace = view.findViewById(R.id.state_of_place);
     }
 

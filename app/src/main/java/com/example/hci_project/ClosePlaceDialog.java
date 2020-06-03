@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,9 +30,10 @@ public class ClosePlaceDialog extends DialogFragment implements DatePickerDialog
     private ImageView plusSign;
     private ImageView minusSign;
     private TextView numOfDaysText;
+    private EditText reasonOfClose;
     private Place place;
     private User user;
-    private boolean dateHasBeenSet;
+    private boolean dateHasBeenSet = false;
     private int numOfDays;
 
 
@@ -91,6 +93,10 @@ public class ClosePlaceDialog extends DialogFragment implements DatePickerDialog
                     Toast.makeText(getContext(), "You need to choose date and time", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(reasonOfClose.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(), "Please fill the reason of closing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 MinistryOfHealthAboutPlaceActivity.closePlace();
                 getDialog().dismiss();
             }
@@ -127,6 +133,7 @@ public class ClosePlaceDialog extends DialogFragment implements DatePickerDialog
         plusSign = view.findViewById(R.id.plus_box);
         minusSign = view.findViewById(R.id.minus_box);
         numOfDaysText = view.findViewById(R.id.num_of_days_text);
+        reasonOfClose = view.findViewById(R.id.reason_of_close);
 
     }
 

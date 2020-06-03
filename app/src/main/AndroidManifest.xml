@@ -17,7 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppFullScreenTheme">
-        <activity android:name=".MinistryOfHealthAboutPlaceActivity"></activity>
+        <activity android:name=".MyReportsActivity"></activity>
+        <activity android:name=".PoliceSideMenuActivity" />
+        <activity android:name=".FillReportActivity" />
+        <activity android:name=".PoliceAboutPlaceActivity" />
+        <activity android:name=".AllReportsActivity" />
+        <activity android:name=".MinistryOfHealthSideMenuActivity" />
+        <activity android:name=".ReportActivity" />
+        <activity android:name=".PlaceReportsActivity" />
+        <activity android:name=".MinistryOfHealthAboutPlaceActivity" />
         <activity android:name=".OwnerInvitations" />
         <activity android:name=".EditPlaceActivity" />
         <activity android:name=".OwnerHomeActivity" />

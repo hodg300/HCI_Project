@@ -96,7 +96,6 @@
         android:padding="20dp"
         android:maxLines="4"
         android:hint="Write the reason of close here"
-        android:text="Lorem Ipsum isof Letraset sheets containing Lorem Ipsum passages, and more recentlyaker including versions of Lorem Ipsum."
         android:gravity="center"
         android:background="@drawable/edit_text_shape_blue"
         android:layout_marginHorizontal="30dp"

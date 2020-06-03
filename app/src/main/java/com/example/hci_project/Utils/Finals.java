@@ -10,5 +10,16 @@ public class Finals {
     public static final String PLACE_INDEX = "place index";
     public  static final String INVITATION = "invitation";
     public final static String PLACE = "place";
+    public static final String REPORT =  "report";
+    public static final String TEL_AVIV_MUISIUM = "tel aviv muisium";
+    public static final String MOSES = "moses";
+
+
+
+    public static final String SEGEV_EXPRESS = "segev express";
+    public static final String SUSU_AND_SONS = "susu and sons";
+    public static final String AHOOG_HATSFONI = "ahoog hatsfoni";
+    public static final String NAME_OF_PLACE ="name of place" ;
+
 
 }

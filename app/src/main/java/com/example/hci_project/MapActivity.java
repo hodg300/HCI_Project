@@ -95,7 +95,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this, VisitorSideMenuActivity.class);
+        Intent intent = null;
+        if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+             intent = new Intent(this, VisitorSideMenuActivity.class);
+        } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)) {
+            intent = new Intent(this, PoliceSideMenuActivity.class);
+        }
         intent.putExtra(Finals.USER, currentUser);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
@@ -129,6 +134,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         WaitingActivity.places.get(2).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(2).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
         //Tel Aviv musium
         WaitingActivity.places.get(3).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(3).getLatlng())));
+        //Moses
+        WaitingActivity.places.get(4).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(4).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
 
 
         //Move Camera to Segev EXPRESS
@@ -145,20 +152,49 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
         if (WaitingActivity.places.get(0).getMarker().equals(marker)){
             //החוג הצפוני
-            openPlaceDialog(WaitingActivity.places.get(0));
+            if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                openPlaceDialog(WaitingActivity.places.get(0));
+            } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                openPolicePlaceDialog(WaitingActivity.places.get(0));
+            }
         } else if(WaitingActivity.places.get(1).getMarker().equals(marker)){
             //שגב אקספרס
-            openPlaceDialog(WaitingActivity.places.get(1));
+            if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                openPlaceDialog(WaitingActivity.places.get(1));
+            } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                openPolicePlaceDialog(WaitingActivity.places.get(1));
+            }
         } else if(WaitingActivity.places.get(2).getMarker().equals(marker)){
             //סוסו אנד סאנס
-            openPlaceDialog(WaitingActivity.places.get(2));
+            if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                openPlaceDialog(WaitingActivity.places.get(2));
+            } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                openPolicePlaceDialog(WaitingActivity.places.get(2));
+            }
 
         }else if(WaitingActivity.places.get(3).getMarker().equals(marker)){
             //מוזיאון תל אביב
-            openPlaceDialog(WaitingActivity.places.get(3));
+            if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                openPlaceDialog(WaitingActivity.places.get(3));
+            } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                openPolicePlaceDialog(WaitingActivity.places.get(3));
+            }
+        }else if(WaitingActivity.places.get(4).getMarker().equals(marker)){
+            if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                openPlaceDialog(WaitingActivity.places.get(4));
+            } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                openPolicePlaceDialog(WaitingActivity.places.get(4));
+            }
         }
 
         return true;
+    }
+
+    private void openPolicePlaceDialog(Place place) {
+
+        PoliceAboutPlaceDialog dialog = new PoliceAboutPlaceDialog(place,currentUser);
+        dialog.show(getSupportFragmentManager(),"CarPickerDialog");
+
     }
 
     private void openPlaceDialog(Place place){

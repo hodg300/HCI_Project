@@ -1,12 +1,11 @@
 package com.example.hci_project;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -23,7 +22,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
     public static Button closePlaceBtn;
     private Button updateMaxVisitorsBtn;
     private Button policeReportsBtn;
-    private DynamicXML dynamicXML = new DynamicXML();
+    private DynamicXML dynamicXML;
     private Place place;
     private User user;
     private ImageView imagePlace;
@@ -41,6 +40,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ministry_of_health_about_place);
         place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE_INDEX,0));
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        dynamicXML = new DynamicXML();
         setIds();
         setOnClickListeners();
         setInfo();
@@ -75,7 +75,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
                     ClosePlaceDialog dialog = new ClosePlaceDialog(place, user);
                     dialog.show(getSupportFragmentManager(), "CarPickerDialog");
                 } else {
-                    changeOpenCloseButton("Close Place",R.drawable.close_button_shape);
+                    popUpAlertDialog();
                 }
             }
         });
@@ -92,6 +92,46 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
             }
         });
 
+        policeReportsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goPlaceReportsActivity();
+            }
+        });
+
+    }
+
+    private void popUpAlertDialog() {
+
+        TextView alertMessage = dynamicXML.createTextView(this,
+                "By press confirm the place will open for bussiness again?.",
+                "sans-serif-condensed",15, Color.BLACK, Gravity.CENTER,
+                0,0,0,0);
+        alertMessage.setPadding(40,40,40,40);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Are you sure?")
+                .setView(alertMessage)
+                .setIcon(R.drawable.ic_warning_sign)
+                .setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            @TargetApi(11)
+                            public void onClick(DialogInterface dialog, int id) {
+                                changeOpenCloseButton("Close Place",R.drawable.close_button_shape);
+                            }
+                        })
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @TargetApi(11)
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                }).show();
+
+    }
+
+    private void goPlaceReportsActivity() {
+        Intent intent = new Intent(this, PlaceReportsActivity.class);
+        intent.putExtra(Finals.NAME_OF_PLACE,place.getName());
+        startActivity(intent);
     }
 
 
@@ -102,6 +142,11 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
     }
 
     private void goToMinistryOfHealthSideMenuActivity() {
+        Intent intent = new Intent(this, MinistryOfHealthSideMenuActivity.class);
+        intent.putExtra(Finals.USER,user);
+        startActivity(intent);
+        this.overridePendingTransition(R.anim.left_to_right,
+                R.anim.right_to_left);
     }
 
     private void setIds() {
