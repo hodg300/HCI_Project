@@ -39,18 +39,5 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/clock_btn"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/regular_button_shape_blue"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:textColor="@color/colorWhite"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:text="20:32"/>
 
 </RelativeLayout>

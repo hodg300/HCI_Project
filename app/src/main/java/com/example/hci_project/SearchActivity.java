@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -128,16 +129,23 @@ public class SearchActivity extends Activity {
             if(user.getRole().toLowerCase().equals(Finals.VISITOR)) {
                  placeView = new PlaceView(this,
                         dynamicXML.createTextView(this, place.getName(), "sans-serif-condensed", 20, Color.BLACK, Gravity.TOP, 0, 0, 0, 0),
-                        dynamicXML.createImageView(this, place.getImage(), Gravity.CENTER, 0, 5, 0, 5, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT),
+                        dynamicXML.createImageView(this, place.getImage(), Gravity.CENTER, 0, 5, 0, 5, 350, LinearLayout.LayoutParams.WRAP_CONTENT),
                         dynamicXML.createTextView(this, place.getDescription(), "sans-serif-condensed", 15, Color.BLACK, Gravity.CENTER, 0, 0, 0, 0),
-                        place);
+                        place,user);
             } else if(user.getRole().toLowerCase().equals(Finals.MINISTRY_OF_HEALTH)){
                     placeView = new PlaceView(this,
                         dynamicXML.createTextView(this, place.getName(), "sans-serif-condensed", 20, Color.BLACK, Gravity.TOP, 0, 0, 0, 0),
-                        dynamicXML.createImageView(this, place.getImage(), Gravity.CENTER, 0, 5, 0, 5, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT),
+                        dynamicXML.createImageView(this, place.getImage(), Gravity.CENTER, 0, 5, 0, 5, 350, LinearLayout.LayoutParams.WRAP_CONTENT),
                         dynamicXML.createTextView(this, place.getNumOfVisitors() + "/" + place.getMaxVisitors(), "sans-serif-condensed", 15, Color.BLACK, Gravity.CENTER, 0, 0, 0, 0),
-                        place);
+                        place,user);
+            }else if(user.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                placeView = new PlaceView(this,
+                        dynamicXML.createTextView(this, place.getName(), "sans-serif-condensed", 20, Color.BLACK, Gravity.TOP, 0, 0, 0, 0),
+                        dynamicXML.createImageView(this, place.getImage(), Gravity.CENTER, 0, 5, 0, 5, 350, LinearLayout.LayoutParams.WRAP_CONTENT),
+                        dynamicXML.createTextView(this, place.getNumOfVisitors() + "/" + place.getMaxVisitors(), "sans-serif-condensed", 15, Color.BLACK, Gravity.CENTER, 0, 0, 0, 0),
+                        place,user);
             }
+
             linearToPlaceMap.put(placeView.getCard(),place);
             placesView.add(placeView);
             placesHolder.addView(placeView.getCard());
@@ -157,10 +165,23 @@ public class SearchActivity extends Activity {
                 } else if(user.getRole().toLowerCase().equals(Finals.MINISTRY_OF_HEALTH)){
                     goToMinistryOfHealthAboutPlaceActivity(((Place) linearToPlaceMap.get(view)).getIndex());
                 }
+                 else if(user.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                    goToPoliceAboutPlaceActivity(((Place) linearToPlaceMap.get(view)).getIndex());
+                }
             }
         });
 
 
+    }
+
+
+
+    private void goToPoliceAboutPlaceActivity(int pressedPlaceIndex) {
+
+        Intent intent = new Intent(this, PoliceAboutPlaceActivity.class);
+        intent.putExtra(Finals.USER,user);
+        intent.putExtra(Finals.PLACE_INDEX,pressedPlaceIndex);
+        startActivity(intent);
     }
 
     private void goToMinistryOfHealthAboutPlaceActivity(int pressedPlaceIndex) {
