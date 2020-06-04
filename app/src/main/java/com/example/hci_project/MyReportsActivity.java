@@ -47,7 +47,7 @@ public class MyReportsActivity extends Activity {
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this, MinistryOfHealthSideMenuActivity.class);
+        Intent intent = new Intent(this, PoliceSideMenuActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,

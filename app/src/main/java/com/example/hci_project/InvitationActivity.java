@@ -20,7 +20,7 @@ import java.util.Calendar;
 public class InvitationActivity extends Activity  implements DatePickerDialog.OnDateSetListener{
 
     private TextView header;
-    private TextView date;
+    private Button date;
     private TextView numOfGuests;
     private ImageView plusSign;
     private ImageView minusSign;

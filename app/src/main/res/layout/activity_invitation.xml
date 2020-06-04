@@ -68,14 +68,16 @@
 
 
 
-    <TextView
+    <Button
         android:id="@+id/date"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_below="@id/guests_container"
         android:text="09/08/20"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:gravity="center"
+        android:background="@drawable/regular_button_shape_blue"
         android:fontFamily="sans-serif-smallcaps"
         android:textStyle="bold"
         android:textSize="20dp"/>

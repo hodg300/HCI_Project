@@ -1,15 +1,21 @@
 package com.example.hci_project.Views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.hci_project.MinistryOfHealthAboutPlaceActivity;
 import com.example.hci_project.Place;
+import com.example.hci_project.PoliceAboutPlaceActivity;
 import com.example.hci_project.R;
+import com.example.hci_project.User;
 import com.example.hci_project.Utils.DynamicXML;
+import com.example.hci_project.Utils.Finals;
 
 
 public class PlaceView {
@@ -21,9 +27,10 @@ public class PlaceView {
     private DynamicXML dynamicallyXML;
     private Context context;
     private Place place;
+    private User user;
 
 
-    public PlaceView(Context context,TextView nameOfPlace,ImageView image,TextView description,Place place){
+    public PlaceView(Context context,TextView nameOfPlace,ImageView image,TextView description,Place place,User user){
         dynamicallyXML = new DynamicXML();
         this.context = context;
         this.nameOfPlace = nameOfPlace;
@@ -31,12 +38,18 @@ public class PlaceView {
         this.description = description;
         this.card = new LinearLayout(context);
         this.place = place;
+        this.user = user;
         createCard();
 
 
     }
 
     private void createCard() {
+
+        Log.d("GUGU", "crate card!!!!");
+        Log.d("GUGU", "user.gerRole: " + user.getRole());
+        Log.d("GUGU", "final is  " + Finals.POLICE_OFFICER);
+
         card.setBackgroundResource(R.drawable.card_view_shape);
         LinearLayout.LayoutParams cardParam = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -79,19 +92,11 @@ public class PlaceView {
         card.addView(placeDescriptionLayout);
         card.addView(imageLayout);
 
-        setClickListeners(card);
     }
 
-    void setClickListeners(LinearLayout cardView){
 
 
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
-    }
 
     public LinearLayout getCard() {
         return card;

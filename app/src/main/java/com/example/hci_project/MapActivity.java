@@ -26,10 +26,9 @@ import java.util.Calendar;
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap map;
-    private ImageView search_btn;
+    private ImageView searchBtn;
     public static ArrayList<Invitation> invitations = new ArrayList<>();
     public static User currentUser;
-    private Button clock;
     private ImageView menu;
     private int hours;
     private int minutes;
@@ -46,39 +45,18 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         mapFragment.getMapAsync(this);
         setIds();
         setOnClickListeners();
-        changeTime();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        handleTime();
     }
 
-    private void handleTime() {
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
 
-              changeTime();
-              handleTime();
 
-            }
-        }, 5000);
-
-    }
-
-    private void changeTime(){
-
-        Log.d("TIME", "im here on changeTime: ");
-        // current time
-
-       hours = calendar.get(Calendar.HOUR_OF_DAY);
-        minutes = calendar.get(Calendar.MINUTE);
-        clock.setText(hours +":" + minutes);
-    }
 
     private void setOnClickListeners() {
-        search_btn.setOnClickListener(new View.OnClickListener() {
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToSearchActivity();
@@ -114,8 +92,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     }
 
     private void setIds() {
-        search_btn = findViewById(R.id.search);
-        clock = findViewById(R.id.clock_btn);
+        searchBtn = findViewById(R.id.search);
         menu = findViewById(R.id.menu);
     }
 

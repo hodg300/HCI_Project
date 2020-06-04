@@ -32,7 +32,16 @@ public class SettingsActivity extends Activity {
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this, VisitorSideMenuActivity.class);
+        Intent intent = null;
+        if(user.getRole().toLowerCase().equals(Finals.VISITOR)) {
+             intent = new Intent(this, VisitorSideMenuActivity.class);
+        } else if(user.getRole().toLowerCase().equals(Finals.PLACE_OWNER)){
+            intent = new Intent(this, OwnerSideMenuActivity.class);
+        } else if(user.getRole().toLowerCase().equals(Finals.MINISTRY_OF_HEALTH)){
+            intent = new Intent(this, MinistryOfHealthSideMenuActivity.class);
+        } else if(user.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+            intent = new Intent(this, PoliceSideMenuActivity.class);
+        }
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,

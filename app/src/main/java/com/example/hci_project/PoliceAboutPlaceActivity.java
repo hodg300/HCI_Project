@@ -61,7 +61,7 @@ public class PoliceAboutPlaceActivity extends Activity {
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this, VisitorSideMenuActivity.class);
+        Intent intent = new Intent(this, PoliceSideMenuActivity.class);
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         intent.putExtra(Finals.USER,user);

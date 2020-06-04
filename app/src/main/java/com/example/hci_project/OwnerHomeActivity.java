@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -134,6 +135,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
     }
 
     private void closePlace() {
+        Log.d("HOD", closeBtn.getText().toString().toLowerCase());
         if(closeBtn.getText().toString().toLowerCase().equals("open place")){
             changeOpenCloseButton("Close Place",R.drawable.close_button_shape);
         } else {
@@ -158,7 +160,8 @@ public class OwnerHomeActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @TargetApi(11)
                             public void onClick(DialogInterface dialog, int id) {
-                                changeOpenCloseButton("Open\nPlace", R.drawable.open_button_shape);
+                                changeOpenCloseButton("Open Place", R.drawable.open_button_shape);
+                                closeBtn.setTextSize(20);
                             }
                         })
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {

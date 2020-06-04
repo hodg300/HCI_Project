@@ -3,6 +3,7 @@ package com.example.hci_project;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -71,6 +72,8 @@ public class PoliceSideMenuActivity extends Activity {
 
     private void goToMapActivity() {
 
+        Log.d("LALA", "hereeeeee: ");
+
         Intent intent = new Intent(this,MapActivity.class);
         intent.putExtra(Finals.USER, user);
         startActivity(intent);
@@ -93,6 +96,8 @@ public class PoliceSideMenuActivity extends Activity {
     }
 
     private void goToMyReportsActivity(){
+        Log.d("LALA", "hereeeeee: ");
+
         Intent intent = new Intent(this,MyReportsActivity.class);
         intent.putExtra(Finals.USER, user);
         startActivity(intent);
