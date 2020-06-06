@@ -114,5 +114,22 @@ public class WaitingActivity extends Activity {
                 new LatLng(32.1093289,34.8427159),120,false,300,
                 "12:00 - 20:00" ,"Israeli Hamburger",4));
 
+        places.add(new Place(Finals.BEER_GARDEN,R.drawable.beer_garden_img,
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                new LatLng(32.0488213,34.9039284),300,true,300,
+                "16:00 - 3:00" ,"Israel Bar",5));
+
+        places.add(new Place(Finals.AL_HAYAM,R.drawable.al_hayam,
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                new LatLng(32.1797829,34.8024603),228,false,250,
+                "16:00 - 3:00" ,"Sea Food Restaurant and Bar",6));
+
+        places.add(new Place(Finals.NAGISA,R.drawable.nagisa,
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                new LatLng(32.093697,34.8248839),100,true,100,
+                "16:00 - 3:00" ,"Japanese Kitchen",7));
+
+
+
     }
 }

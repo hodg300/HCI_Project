@@ -17,9 +17,13 @@ public class Finals {
 
 
     public static final String SEGEV_EXPRESS = "segev express";
-    public static final String SUSU_AND_SONS = "susu and sons";
+    public static final String SUSU_AND_SONS = "susu And sons";
     public static final String AHOOG_HATSFONI = "ahoog hatsfoni";
-    public static final String NAME_OF_PLACE ="name of place" ;
+    public static final String NAME_OF_PLACE ="name of place";
+    public static final String BEER_GARDEN = "beer garden";
+    public static final String AL_HAYAM = "al hayam";
+    public static final String NAGISA = "nagisa";
+
 
 
 }

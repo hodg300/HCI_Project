@@ -114,6 +114,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         //Moses
         WaitingActivity.places.get(4).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(4).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
 
+        //Beer Garden
+        WaitingActivity.places.get(5).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(5).getLatlng())));
+
+        WaitingActivity.places.get(6).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(6).getLatlng()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))));
+
+        WaitingActivity.places.get(7).setMarker(map.addMarker(new MarkerOptions().position(WaitingActivity.places.get(7).getLatlng())));
+
 
         //Move Camera to Segev EXPRESS
         CameraUpdate zoom=CameraUpdateFactory.zoomTo(12);
@@ -156,11 +163,38 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
                 openPolicePlaceDialog(WaitingActivity.places.get(3));
             }
+
+            //מוזס
         }else if(WaitingActivity.places.get(4).getMarker().equals(marker)){
             if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
                 openPlaceDialog(WaitingActivity.places.get(4));
             } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
                 openPolicePlaceDialog(WaitingActivity.places.get(4));
+            }
+        }
+
+        //ביר גארדן
+        else if(WaitingActivity.places.get(5).getMarker().equals(marker)){
+            if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                openPlaceDialog(WaitingActivity.places.get(5));
+            } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                openPolicePlaceDialog(WaitingActivity.places.get(5));
+            }
+        }
+
+        else if(WaitingActivity.places.get(6).getMarker().equals(marker)){
+            if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                openPlaceDialog(WaitingActivity.places.get(6));
+            } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                openPolicePlaceDialog(WaitingActivity.places.get(6));
+            }
+        }
+
+        else if(WaitingActivity.places.get(7).getMarker().equals(marker)){
+            if(currentUser.getRole().toLowerCase().equals(Finals.VISITOR)) {
+                openPlaceDialog(WaitingActivity.places.get(7));
+            } else if(currentUser.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)){
+                openPolicePlaceDialog(WaitingActivity.places.get(7));
             }
         }
 
