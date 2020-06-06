@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class VisitorAboutPlaceActivity extends Activity {
     final String CURRENT_VISITORS = "Current visitors: ";
@@ -23,16 +25,23 @@ public class VisitorAboutPlaceActivity extends Activity {
     private Button invite;
     private ImageView menu;
     private User user;
+    private RelativeLayout visitorAboutPlaceWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_about_place);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
-        place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
+        place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE, 0));
         setIds();
         setTextOnViews();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(visitorAboutPlaceWindow);
     }
 
     private void setOnClickListeners() {
@@ -46,24 +55,24 @@ public class VisitorAboutPlaceActivity extends Activity {
         invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               goToInvitationActivity();
+                goToInvitationActivity();
             }
         });
     }
 
     private void goToInvitationActivity() {
 
-        Intent intent = new Intent(this,InvitationActivity.class);
-        intent.putExtra(Finals.USER,user);
+        Intent intent = new Intent(this, InvitationActivity.class);
+        intent.putExtra(Finals.USER, user);
         intent.putExtra(Finals.PLACE_INDEX, WaitingActivity.places.indexOf(place));
         startActivity(intent);
     }
 
-    private void goToSideMenuActivity(){
+    private void goToSideMenuActivity() {
         Intent intent = new Intent(this, VisitorSideMenuActivity.class);
-        intent.putExtra(Finals.USER,user);
+        intent.putExtra(Finals.USER, user);
         startActivity(intent);
-        intent.putExtra(Finals.USER,user);
+        intent.putExtra(Finals.USER, user);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);
     }
@@ -86,5 +95,6 @@ public class VisitorAboutPlaceActivity extends Activity {
         cuisines = findViewById(R.id.Cuisines_type);
         invite = findViewById(R.id.invite_btn);
         menu = findViewById(R.id.menu);
+        visitorAboutPlaceWindow = findViewById(R.id.visitor_about_place_window);
     }
 }

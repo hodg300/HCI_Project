@@ -8,13 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class EditPlaceActivity extends AppCompatActivity {
 
     private EditText nameOfPlace;
     private EditText description;
+    private RelativeLayout editPlaceWindow;
     private ImageView menu;
     private Button submitBtn;
     private Place place;
@@ -30,6 +33,12 @@ public class EditPlaceActivity extends AppCompatActivity {
         setOnClickListeners();
         setInfo();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(editPlaceWindow);
     }
 
     private void setInfo() {
@@ -78,5 +87,6 @@ public class EditPlaceActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         submitBtn = findViewById(R.id.submit_btn);
         menu = findViewById(R.id.menu);
+        editPlaceWindow = findViewById(R.id.edit_place_window);
     }
 }

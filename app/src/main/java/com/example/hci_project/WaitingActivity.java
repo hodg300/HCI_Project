@@ -16,6 +16,7 @@ public class WaitingActivity extends Activity {
     private ProgressBar progressBar;
     private User user;
     public static ArrayList<Place> places = new ArrayList<>();
+    public static boolean isDarkModeOn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

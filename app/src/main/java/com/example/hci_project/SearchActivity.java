@@ -12,10 +12,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 import com.example.hci_project.Views.PlaceView;
 
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class SearchActivity extends Activity {
     private Map<LinearLayout,Place> linearToPlaceMap;
     private ImageView menu;
     private User user;
+    private RelativeLayout searchWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,12 @@ public class SearchActivity extends Activity {
         setOnClickListeners();
         searchPlaces("");
         showPlaces();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(searchWindow);
     }
 
     private void createReports() {
@@ -203,7 +212,13 @@ public class SearchActivity extends Activity {
     }
 
     private void goToSideMenuActivity(){
-        Intent intent = new Intent(this, MinistryOfHealthSideMenuActivity.class);
+        Intent intent = null;
+        if(user.getRole().toLowerCase().equals(Finals.MINISTRY_OF_HEALTH)) {
+             intent = new Intent(this, MinistryOfHealthSideMenuActivity.class);
+        }else if(user.getRole().toLowerCase().equals(Finals.VISITOR)){
+            intent = new Intent(this, VisitorSideMenuActivity.class);
+        }
+
         intent.putExtra(Finals.USER,user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
@@ -225,5 +240,6 @@ public class SearchActivity extends Activity {
         searchEditText = findViewById(R.id.search_editText);
         placesHolder = findViewById(R.id.places_holder);
         menu = findViewById(R.id.menu);
+        searchWindow = findViewById(R.id.search_window);
     }
 }

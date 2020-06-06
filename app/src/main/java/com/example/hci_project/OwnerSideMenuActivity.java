@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
@@ -18,6 +19,7 @@ public class OwnerSideMenuActivity extends Activity {
     private TextView allInvitations;
     private TextView home;
     private ImageView back;
+    private RelativeLayout ownerSideMenuWindow;
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
 
@@ -29,6 +31,12 @@ public class OwnerSideMenuActivity extends Activity {
         setIds();
         setDetails();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ownerSideMenuWindow = findViewById(R.id.owner_side_menu_window);
     }
 
     private void setDetails() {
@@ -141,6 +149,7 @@ public class OwnerSideMenuActivity extends Activity {
         back = findViewById(R.id.back);
         nameOfUser = findViewById(R.id.name_of_user);
         image = findViewById(R.id.profile_image);
+        ownerSideMenuWindow = findViewById(R.id.owner_side_menu_window);
 
     }
 }

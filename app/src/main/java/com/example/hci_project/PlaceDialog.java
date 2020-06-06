@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class PlaceDialog extends DialogFragment {
 
@@ -33,6 +34,8 @@ public class PlaceDialog extends DialogFragment {
     private User user;
     private final String FULL = "The place if currently full";
     private final String NOT_FULL = "this place is currently open for X visitors";
+    private RelativeLayout restaurantDialogContainer;
+
 
 
 
@@ -40,6 +43,12 @@ public class PlaceDialog extends DialogFragment {
 
         this.place = place;
         this.user = user;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(restaurantDialogContainer);
     }
 
     @Nullable
@@ -127,6 +136,8 @@ public class PlaceDialog extends DialogFragment {
         infoImg = view.findViewById(R.id.info);
         inviteButton = view.findViewById(R.id.invite_btn);
         stateOfPlace = view.findViewById(R.id.state_of_place);
+        restaurantDialogContainer = view.findViewById(R.id.restaurant_dialog_container);
+
     }
 
 }

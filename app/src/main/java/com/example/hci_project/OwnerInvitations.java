@@ -8,10 +8,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 import com.example.hci_project.Views.InvitationView;
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class OwnerInvitations extends Activity {
     private ImageView menu;
     private DynamicXML dynamicXML;
     private User user;
+    private RelativeLayout ownerInvitationWindow;
     private Place place;
 
     @Override
@@ -85,10 +88,17 @@ public class OwnerInvitations extends Activity {
                 R.anim.right_to_left);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(ownerInvitationWindow);
+    }
+
     private void setIds() {
 
         invitationsHolder = findViewById(R.id.invitations_holder);
         menu = findViewById(R.id.menu);
+        ownerInvitationWindow = findViewById(R.id.owner_invitation_window);
     }
 
     private void showInvitations() {

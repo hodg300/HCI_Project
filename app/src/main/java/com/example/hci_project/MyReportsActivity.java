@@ -9,9 +9,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 import com.example.hci_project.Views.ReportView;
 
 
@@ -21,6 +23,7 @@ public class MyReportsActivity extends Activity {
     private ImageView menu;
     private DynamicXML dynamicXML;
     private String nameOfPlace;
+    private RelativeLayout myReportWindow;
     private User user;
 
     @Override
@@ -36,6 +39,11 @@ public class MyReportsActivity extends Activity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(myReportWindow);
+    }
 
     private void setOnClickListeners() {
         menu.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +66,7 @@ public class MyReportsActivity extends Activity {
 
         reportsHolder = findViewById(R.id.reports_holder);
         menu = findViewById(R.id.menu);
+        myReportWindow = findViewById(R.id.my_reports_window);
     }
 
     private void showPlaces() {

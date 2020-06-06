@@ -8,9 +8,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 import com.example.hci_project.Views.ReportView;
 
 
@@ -21,6 +23,7 @@ public class AllReportsActivity extends Activity {
     private DynamicXML dynamicXML;
     private String nameOfPlace;
     private User user;
+    private RelativeLayout allReportsWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,11 @@ public class AllReportsActivity extends Activity {
 
     }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(allReportsWindow);
+    }
 
     private void setOnClickListeners() {
         menu.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +65,7 @@ public class AllReportsActivity extends Activity {
 
         reportsHolder = findViewById(R.id.reports_holder);
         menu = findViewById(R.id.menu);
+        allReportsWindow = findViewById(R.id.all_reports_window);
     }
 
     private void showPlaces() {

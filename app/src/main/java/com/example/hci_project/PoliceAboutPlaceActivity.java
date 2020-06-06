@@ -8,9 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class PoliceAboutPlaceActivity extends Activity {
     final String CURRENT_VISITORS = "Current visitors: ";
@@ -24,6 +26,7 @@ public class PoliceAboutPlaceActivity extends Activity {
     private Button report;
     private ImageView menu;
     private User user;
+    private RelativeLayout policeAboutPlaceWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,12 @@ public class PoliceAboutPlaceActivity extends Activity {
         setIds();
         setTextOnViews();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(policeAboutPlaceWindow);
     }
 
     private void setOnClickListeners() {
@@ -87,5 +96,6 @@ public class PoliceAboutPlaceActivity extends Activity {
         cuisines = findViewById(R.id.Cuisines_type);
         report = findViewById(R.id.report_btn);
         menu = findViewById(R.id.menu);
+        policeAboutPlaceWindow = findViewById(R.id.police_about_place_window);
     }
 }

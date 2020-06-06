@@ -15,24 +15,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:background="@color/colorWhite">
 
         <ImageView
             android:id="@+id/search"
             android:layout_centerInParent="true"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
             android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/ic_search" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_centerInParent="true"
+            android:layout_height="70dp"
+            android:layout_width="70dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo" />
 
 
         <ImageView
             android:layout_centerInParent="true"
             android:id="@+id/menu"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
             android:layout_marginLeft="20dp"
             android:layout_alignParentLeft="true"
             android:src="@drawable/ic_menu" />

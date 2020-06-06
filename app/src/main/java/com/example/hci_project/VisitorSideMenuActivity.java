@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class VisitorSideMenuActivity extends Activity {
 
@@ -19,6 +21,7 @@ public class VisitorSideMenuActivity extends Activity {
     private ImageView back;
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
+    private RelativeLayout visitorSideMenuWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,12 @@ public class VisitorSideMenuActivity extends Activity {
         setIds();
         setDetails();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(visitorSideMenuWindow);
     }
 
     private void setDetails() {
@@ -118,6 +127,7 @@ public class VisitorSideMenuActivity extends Activity {
         nameOfUser = findViewById(R.id.name_of_user);
         image = findViewById(R.id.profile_image);
         home = findViewById(R.id.home);
+        visitorSideMenuWindow  = findViewById(R.id.visitor_side_menu_window);
 
     }
 }

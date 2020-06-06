@@ -11,11 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 import java.time.ZonedDateTime;
 import java.util.Calendar;
@@ -34,8 +36,9 @@ public class UpdateVisitorsActivity extends AppCompatActivity implements DatePic
    private int numOfVisitors;
    private int maxNumOfVisitors;
    private User user;
-   boolean dateHasBeenSet = false;
-   boolean timeHasBeenSet = false;
+   private boolean dateHasBeenSet = false;
+   private boolean timeHasBeenSet = false;
+   private RelativeLayout updateVisitorWindow;
 
 
     @Override
@@ -49,9 +52,12 @@ public class UpdateVisitorsActivity extends AppCompatActivity implements DatePic
         setOnClickListeners();
         setInfo();
 
+    }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(updateVisitorWindow);
     }
 
     private void setInfo() {
@@ -179,6 +185,7 @@ public class UpdateVisitorsActivity extends AppCompatActivity implements DatePic
         maxVisitorText = findViewById(R.id.max_visitors);
         numOfVisitorsText = findViewById(R.id.visitors_number);
         menu = findViewById(R.id.menu);
+        updateVisitorWindow = findViewById(R.id.update_visitor_window);
     }
 
     @Override

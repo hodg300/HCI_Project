@@ -116,7 +116,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
 
         //Move Camera to Segev EXPRESS
-        CameraUpdate zoom=CameraUpdateFactory.zoomTo(14);
+        CameraUpdate zoom=CameraUpdateFactory.zoomTo(12);
         map.moveCamera(CameraUpdateFactory.newLatLng(WaitingActivity.places.get(1).getLatlng()));
         map.animateCamera(zoom);
 

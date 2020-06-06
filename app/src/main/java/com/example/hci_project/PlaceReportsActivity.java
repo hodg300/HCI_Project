@@ -8,10 +8,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 import com.example.hci_project.Views.ReportView;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class PlaceReportsActivity extends Activity {
     private String nameOfPlace;
     private User user;
     private ArrayList<Report> myReports;
+    private RelativeLayout placeReportsWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,12 @@ public class PlaceReportsActivity extends Activity {
         getMyReports();
         showPlaces();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(placeReportsWindow);
     }
 
     private void setInfo() {
@@ -84,6 +93,7 @@ public class PlaceReportsActivity extends Activity {
         reportsHolder = findViewById(R.id.reports_holder);
         placeReports = findViewById(R.id.place_reports_title);
         menu = findViewById(R.id.menu);
+        placeReportsWindow = findViewById(R.id.place_reports_window);
     }
 
     private void showPlaces() {

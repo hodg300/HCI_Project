@@ -8,10 +8,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 import com.example.hci_project.Views.InvitationView;
 
 public class MyInvitationsActivity extends Activity {
@@ -20,6 +22,7 @@ public class MyInvitationsActivity extends Activity {
     private ImageView menu;
     private DynamicXML dynamicXML;
     private User user;
+    private RelativeLayout myInvitationWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,12 @@ public class MyInvitationsActivity extends Activity {
         setIds();
         setOnClickListeners();
         showPlaces();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(myInvitationWindow);
     }
 
     private void setOnClickListeners() {
@@ -53,6 +62,7 @@ public class MyInvitationsActivity extends Activity {
 
         invitationsHolder = findViewById(R.id.invitations_holder);
         menu = findViewById(R.id.menu);
+        myInvitationWindow = findViewById(R.id.my_invitation_window);
     }
 
     private void showPlaces() {

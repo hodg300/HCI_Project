@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 import java.time.ZonedDateTime;
 import java.util.Calendar;
@@ -28,6 +30,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
     private TimePicker timePicker;
     private User user;
     private int placeIndex;
+    private RelativeLayout invitationWindow;
     private Invitation invitation;
 
 
@@ -40,6 +43,12 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
         setIds();
         setInfo();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(invitationWindow);
     }
 
     private void setOnClickListeners() {
@@ -119,6 +128,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
         minusSign = findViewById(R.id.minus_box);
         confirmBtn = findViewById(R.id.approve_invitation_btn);
         timePicker = findViewById(R.id.time_picker);
+        invitationWindow = findViewById(R.id.invitation_window);
 
     }
 

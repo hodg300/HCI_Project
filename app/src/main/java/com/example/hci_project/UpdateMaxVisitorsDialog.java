@@ -11,12 +11,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.hci_project.Utils.Util;
 
 
 public class UpdateMaxVisitorsDialog extends DialogFragment {
@@ -28,6 +31,7 @@ public class UpdateMaxVisitorsDialog extends DialogFragment {
     private TextView maxVisitors;
     private Place place;
     private User user;
+    private RelativeLayout updateMaxVisitorsWindow;
 
 
 
@@ -50,6 +54,12 @@ public class UpdateMaxVisitorsDialog extends DialogFragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(updateMaxVisitorsWindow);
     }
 
     private void setOnClickListeners() {
@@ -115,6 +125,7 @@ public class UpdateMaxVisitorsDialog extends DialogFragment {
        confirmBtn = view.findViewById(R.id.confirm_button);
        cancelBtn = view.findViewById(R.id.cancel_button);
        maxVisitors = view.findViewById(R.id.max_visitors_text);
+       updateMaxVisitorsWindow = view.findViewById(R.id.update_max_visitor_window);
     }
 
 }

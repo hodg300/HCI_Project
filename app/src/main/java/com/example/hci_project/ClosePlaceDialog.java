@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.hci_project.Utils.Util;
 
 import java.util.Calendar;
 
@@ -32,6 +35,7 @@ public class ClosePlaceDialog extends DialogFragment implements DatePickerDialog
     private TextView numOfDaysText;
     private EditText reasonOfClose;
     private Place place;
+    private RelativeLayout closePlaceWindow;
     private User user;
     private boolean dateHasBeenSet = false;
     private int numOfDays;
@@ -42,6 +46,12 @@ public class ClosePlaceDialog extends DialogFragment implements DatePickerDialog
 
         this.place = place;
         this.user = user;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(closePlaceWindow);
     }
 
     @Nullable
@@ -134,6 +144,7 @@ public class ClosePlaceDialog extends DialogFragment implements DatePickerDialog
         minusSign = view.findViewById(R.id.minus_box);
         numOfDaysText = view.findViewById(R.id.num_of_days_text);
         reasonOfClose = view.findViewById(R.id.reason_of_close);
+        closePlaceWindow = view.findViewById(R.id.close_place_window);
 
     }
 

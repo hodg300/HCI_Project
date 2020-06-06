@@ -8,15 +8,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class FillReportActivity extends Activity {
 
     private Place place;
     private Button report;
     private ImageView menu;
+    private RelativeLayout fillReportWindow;
     private User user;
 
     @Override
@@ -27,6 +30,12 @@ public class FillReportActivity extends Activity {
         place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
         setIds();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(fillReportWindow);
     }
 
     private void setOnClickListeners() {
@@ -68,5 +77,6 @@ public class FillReportActivity extends Activity {
 
         report = findViewById(R.id.report_btn);
         menu = findViewById(R.id.menu);
+        fillReportWindow = findViewById(R.id.fill_report_window);
     }
 }

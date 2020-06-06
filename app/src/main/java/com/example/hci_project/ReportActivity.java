@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class ReportActivity extends AppCompatActivity {
 
@@ -16,7 +18,8 @@ public class ReportActivity extends AppCompatActivity {
     private TextView reportDescription;
     private ImageView menu;
     private User user;
-    Report report;
+    private Report report;
+    private RelativeLayout reportWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,12 @@ public class ReportActivity extends AppCompatActivity {
         setIds();
         setInfo();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(reportWindow);
     }
 
     private void setOnClickListeners() {
@@ -58,5 +67,6 @@ public class ReportActivity extends AppCompatActivity {
         filledBy = findViewById(R.id.filled_by);
         reportDescription = findViewById(R.id.report_description);
         menu = findViewById(R.id.menu);
+        reportWindow = findViewById(R.id.report_window);
     }
 }

@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class MinistryOfHealthSideMenuActivity extends Activity {
 
@@ -19,6 +21,7 @@ public class MinistryOfHealthSideMenuActivity extends Activity {
     private ImageView back;
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
+    private RelativeLayout ministryOfHealthSideMenuActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,12 @@ public class MinistryOfHealthSideMenuActivity extends Activity {
         setIds();
         setDetails();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(ministryOfHealthSideMenuActivity);
     }
 
     private void setDetails() {
@@ -123,6 +132,7 @@ public class MinistryOfHealthSideMenuActivity extends Activity {
         nameOfUser = findViewById(R.id.name_of_user);
         image = findViewById(R.id.profile_image);
         home = findViewById(R.id.home);
+        ministryOfHealthSideMenuActivity = findViewById(R.id.ministryOfHealthSideMenuWindow);
 
     }
 }

@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class PoliceSideMenuActivity extends Activity {
 
@@ -20,6 +22,7 @@ public class PoliceSideMenuActivity extends Activity {
     private ImageView back;
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
+    private RelativeLayout policeSideMenuWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,12 @@ public class PoliceSideMenuActivity extends Activity {
         setIds();
         setDetails();
         setOnClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(policeSideMenuWindow);
     }
 
     private void setDetails() {
@@ -124,6 +133,7 @@ public class PoliceSideMenuActivity extends Activity {
         nameOfUser = findViewById(R.id.name_of_user);
         image = findViewById(R.id.profile_image);
         home = findViewById(R.id.home);
+        policeSideMenuWindow = findViewById(R.id.police_about_place_window);
 
     }
 }

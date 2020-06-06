@@ -31,7 +31,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        changeBackgroundImage();
         setIds();
         setOnClickListeners();
 
@@ -97,7 +96,6 @@ public class LoginActivity extends Activity {
     protected void onResume() {
         super.onResume();
         abort = false;
-        this.changeBackground();
     }
 
     @Override
@@ -107,36 +105,6 @@ public class LoginActivity extends Activity {
 
     }
 
-
-    private void changeBackground(){
-
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-
-                if (abort)
-                    return;
-
-                if(count< backgrounds.length - 1){
-                    count++;
-                }
-                else{
-                    count = 0;
-                }
-                changeBackgroundImage();
-                changeBackground();
-
-            }
-        }, 3000);
-    }
-
-    private void changeBackgroundImage(){
-        if (abort)
-            return;
-
-        Animation fadeIn = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.fade_out);
-        LoginActivity.this.getWindow().
-                setBackgroundDrawableResource(backgrounds[count]);
-    }
 
     private void setIds() {
 

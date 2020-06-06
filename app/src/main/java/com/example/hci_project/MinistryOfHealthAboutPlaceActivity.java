@@ -12,10 +12,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
 
@@ -33,6 +35,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
     private TextView maxNumOfVisitors;
     private TextView openHour;
     private TextView cuisines;
+    private RelativeLayout ministryOfHealthAboutPlaceWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,12 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
         setIds();
         setOnClickListeners();
         setInfo();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(ministryOfHealthAboutPlaceWindow);
     }
 
     private void setInfo() {
@@ -162,6 +171,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
         maxNumOfVisitors = findViewById(R.id.max_visitors);
         openHour = findViewById(R.id.hours);
         cuisines = findViewById(R.id.cuisines_type);
+        ministryOfHealthAboutPlaceWindow = findViewById(R.id.ministry_of_health_about_place_window);
     }
 
     public static void closePlace() {

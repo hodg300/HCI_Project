@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/not_full_dialog_rounded_bg"
+    android:id="@+id/update_max_visitor_window"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/invitation_window"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InvitationActivity">
@@ -74,6 +75,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/guests_container"
         android:text="09/08/20"
+        android:textColor="@color/colorWhite"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:gravity="center"
@@ -100,6 +102,7 @@
         android:background="@drawable/regular_button_shape_blue"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"
         android:fontFamily="sans-serif-smallcaps"/>
 
 </RelativeLayout>

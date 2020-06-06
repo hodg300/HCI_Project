@@ -13,10 +13,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.DynamicXML;
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class OwnerHomeActivity extends AppCompatActivity {
 
@@ -34,6 +36,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
     private User user;
     private DynamicXML dynamicallyXML;
     public static Place place;
+    private RelativeLayout ownerHomeWindow;
 
 
     @Override
@@ -47,6 +50,12 @@ public class OwnerHomeActivity extends AppCompatActivity {
         setIds();
         setOnClickListeners();
         setInfo();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.changeBackgroundColor(ownerHomeWindow);
     }
 
     private void setInfo() {
@@ -83,6 +92,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
         closeBtn = findViewById(R.id.close_place_btn);
         editPlace = findViewById(R.id.edit_place);
         updateBtn = findViewById(R.id.update_btn);
+        ownerHomeWindow = findViewById(R.id.owner_home_window);
 
     }
 
