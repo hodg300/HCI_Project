@@ -217,6 +217,8 @@ public class SearchActivity extends Activity {
              intent = new Intent(this, MinistryOfHealthSideMenuActivity.class);
         }else if(user.getRole().toLowerCase().equals(Finals.VISITOR)){
             intent = new Intent(this, VisitorSideMenuActivity.class);
+        }else if(user.getRole().toLowerCase().equals(Finals.POLICE_OFFICER)) {
+            intent = new Intent(this, PoliceSideMenuActivity.class);
         }
 
         intent.putExtra(Finals.USER,user);

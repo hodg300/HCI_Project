@@ -133,7 +133,7 @@ public class PoliceSideMenuActivity extends Activity {
         nameOfUser = findViewById(R.id.name_of_user);
         image = findViewById(R.id.profile_image);
         home = findViewById(R.id.home);
-        policeSideMenuWindow = findViewById(R.id.police_about_place_window);
+        policeSideMenuWindow = findViewById(R.id.police_side_menu_window);
 
     }
 }

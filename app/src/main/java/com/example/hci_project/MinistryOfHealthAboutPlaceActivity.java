@@ -32,7 +32,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
     private TextView nameOfPlace;
     private TextView description;
     private TextView numOfVisitors;
-    private TextView maxNumOfVisitors;
+    public static TextView maxNumOfVisitors;
     private TextView openHour;
     private TextView cuisines;
     private RelativeLayout ministryOfHealthAboutPlaceWindow;
@@ -52,6 +52,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        maxNumOfVisitors.setText(place.getMaxVisitors()+"");
         Util.changeBackgroundColor(ministryOfHealthAboutPlaceWindow);
     }
 
@@ -140,6 +141,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
     private void goPlaceReportsActivity() {
         Intent intent = new Intent(this, PlaceReportsActivity.class);
         intent.putExtra(Finals.NAME_OF_PLACE,place.getName());
+        intent.putExtra(Finals.USER, user);
         startActivity(intent);
     }
 

@@ -161,6 +161,8 @@ public class UpdateVisitorsActivity extends AppCompatActivity implements DatePic
             numOfVisitors++;
             numOfVisitorsText.setText(numOfVisitors + "");
             OwnerHomeActivity.place.setNumOfVisitors(numOfVisitors);
+        } else{
+            Toast.makeText(this, "You have reached the maximum!", Toast.LENGTH_SHORT).show();
         }
 
         if(numOfVisitors == maxNumOfVisitors){

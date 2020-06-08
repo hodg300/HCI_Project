@@ -66,7 +66,8 @@ public class UpdateMaxVisitorsDialog extends DialogFragment {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            place.setMaxVisitors(Integer.parseInt(maxVisitors.getText().toString()));
+            MinistryOfHealthAboutPlaceActivity.maxNumOfVisitors.setText(maxVisitors.getText().toString());
                 getDialog().dismiss();
 
             }
