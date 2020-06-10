@@ -27,10 +27,13 @@ public class LoginActivity extends Activity {
     private TextView email;
     private TextView password;
     private int[] backgrounds = {R.drawable.background1,R.drawable.background2,R.drawable.background3};
+    public static Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        activity = this;
         setIds();
         setOnClickListeners();
 

@@ -20,12 +20,14 @@ public class SettingsActivity extends Activity {
     private RelativeLayout settingsWindow;
     private ImageView menu;
     private User user;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setOnClickListeners();
     }

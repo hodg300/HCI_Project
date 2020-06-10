@@ -2,6 +2,7 @@ package com.example.hci_project;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,6 +31,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     public static ArrayList<Invitation> invitations = new ArrayList<>();
     public static User currentUser;
     private ImageView menu;
+    public static Activity activity;
     private int hours;
     private int minutes;
     private Calendar calendar = Calendar.getInstance();
@@ -42,6 +44,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         currentUser = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         mapFragment.getMapAsync(this);
         setIds();
         setOnClickListeners();

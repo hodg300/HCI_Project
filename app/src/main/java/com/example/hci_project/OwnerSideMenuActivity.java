@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hci_project.Utils.Finals;
+import com.example.hci_project.Utils.Util;
 
 public class OwnerSideMenuActivity extends Activity {
 
@@ -22,12 +23,14 @@ public class OwnerSideMenuActivity extends Activity {
     private RelativeLayout ownerSideMenuWindow;
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_side_menu);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setDetails();
         setOnClickListeners();
@@ -137,7 +140,8 @@ public class OwnerSideMenuActivity extends Activity {
     private void goToLoginActivity(){
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
-        finish();
+        Util.finishAllActivities();
+
     }
     private void setIds() {
 

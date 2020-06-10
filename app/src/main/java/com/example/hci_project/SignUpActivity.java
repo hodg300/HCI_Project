@@ -29,10 +29,13 @@ public class SignUpActivity extends Activity {
     private Button createUser_btn;
     private ProgressBar progress_bar;
     private  User user;
+    public static Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        activity = this;
         setIds();
         setSpinner();
         setOnClickListeners();

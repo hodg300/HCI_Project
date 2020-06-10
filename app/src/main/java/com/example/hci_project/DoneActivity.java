@@ -11,12 +11,14 @@ import com.example.hci_project.Utils.Finals;
 public class DoneActivity extends Activity {
     private ImageView success;
     private User user;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_done);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         delay(2);
 

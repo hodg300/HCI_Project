@@ -2,6 +2,7 @@ package com.example.hci_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class EditPlaceActivity extends AppCompatActivity {
     private Button submitBtn;
     private Place place;
     private User user;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class EditPlaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_place);
         place = OwnerHomeActivity.place;
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setOnClickListeners();
         setInfo();

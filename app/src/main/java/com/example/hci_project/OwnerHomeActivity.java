@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -37,6 +38,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
     private DynamicXML dynamicallyXML;
     public static Place place;
     private RelativeLayout ownerHomeWindow;
+    public static Activity activity;
 
 
     @Override
@@ -47,6 +49,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
         //Can change to any place we want from the list
         place = WaitingActivity.places.get(1);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setOnClickListeners();
         setInfo();

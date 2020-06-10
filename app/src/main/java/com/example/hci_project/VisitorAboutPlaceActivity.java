@@ -26,6 +26,7 @@ public class VisitorAboutPlaceActivity extends Activity {
     private ImageView menu;
     private User user;
     private RelativeLayout visitorAboutPlaceWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class VisitorAboutPlaceActivity extends Activity {
         setContentView(R.layout.activity_visitor_about_place);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE, 0));
+        activity = this;
         setIds();
         setTextOnViews();
         setOnClickListeners();

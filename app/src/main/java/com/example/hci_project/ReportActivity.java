@@ -2,6 +2,7 @@ package com.example.hci_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,13 +21,15 @@ public class ReportActivity extends AppCompatActivity {
     private User user;
     private Report report;
     private RelativeLayout reportWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
-        report  = (Report) getIntent().getSerializableExtra(Finals.REPORT);
+        report = (Report) getIntent().getSerializableExtra(Finals.REPORT);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setInfo();
         setOnClickListeners();
@@ -48,9 +51,14 @@ public class ReportActivity extends AppCompatActivity {
         });
     }
 
-    private void goToSideMenuActivity(){
-        Intent intent = new Intent(this, MinistryOfHealthSideMenuActivity.class);
-        intent.putExtra(Finals.USER,user);
+    private void goToSideMenuActivity() {
+        Intent intent = null;
+        if (user.getRole().toLowerCase().equals(Finals.MINISTRY_OF_HEALTH.toLowerCase())) {
+            intent = new Intent(this, MinistryOfHealthSideMenuActivity.class);
+        } else if (user.getRole().toLowerCase().equals(Finals.POLICE_OFFICER.toLowerCase())) {
+            intent = new Intent(this, PoliceSideMenuActivity.class);
+        }
+        intent.putExtra(Finals.USER, user);
         startActivity(intent);
         this.overridePendingTransition(R.anim.left_to_right,
                 R.anim.right_to_left);

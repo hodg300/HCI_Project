@@ -28,6 +28,8 @@ public class PlaceReportsActivity extends Activity {
     private User user;
     private ArrayList<Report> myReports;
     private RelativeLayout placeReportsWindow;
+    public static Activity activity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class PlaceReportsActivity extends Activity {
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         nameOfPlace = getIntent().getStringExtra(Finals.NAME_OF_PLACE);
         dynamicXML = new DynamicXML();
+        activity = this;
         setContentView(R.layout.activity_place_reports);
         setIds();
         setOnClickListeners();
@@ -57,17 +60,29 @@ public class PlaceReportsActivity extends Activity {
 
     private void getMyReports() {
 
-        if(nameOfPlace.toLowerCase().equals(Finals.SEGEV_EXPRESS)){
-            myReports = SearchActivity.segevExpressReports;
+        if(nameOfPlace.toLowerCase().equals(Finals.SEGEV_EXPRESS.toLowerCase())){
+            myReports = WaitingActivity.segevExpressReports;
         }
-        else if(nameOfPlace.toLowerCase().equals(Finals.SUSU_AND_SONS)){
-            myReports = SearchActivity.susuAndSonsReports;
+        else if(nameOfPlace.toLowerCase().equals(Finals.SUSU_AND_SONS.toLowerCase())){
+            myReports = WaitingActivity.susuAndSonsReports;
         }
-        if(nameOfPlace.toLowerCase().equals(Finals.AHOOG_HATSFONI)){
-            myReports = SearchActivity.ahoogHatsfoniReports;
+        else if(nameOfPlace.toLowerCase().equals(Finals.AHOOG_HATSFONI.toLowerCase())){
+            myReports = WaitingActivity.ahoogHatsfoniReports;
         }
-        if(nameOfPlace.toLowerCase().equals(Finals.TEL_AVIV_MUISIUM)){
-            myReports = SearchActivity.telAvivMusiumReports;
+        else if(nameOfPlace.toLowerCase().equals(Finals.TEL_AVIV_MUISIUM.toLowerCase())){
+            myReports = WaitingActivity.telAvivMusiumReports;
+        }
+        else if(nameOfPlace.toLowerCase().equals(Finals.MOSES.toLowerCase())){
+            myReports = WaitingActivity.mosesReports;
+        }
+        else if(nameOfPlace.toLowerCase().equals(Finals.NAGISA.toLowerCase())){
+            myReports = WaitingActivity.naginasReports;
+        }
+        else if(nameOfPlace.toLowerCase().equals(Finals.AL_HAYAM.toLowerCase())){
+            myReports = WaitingActivity.alHayamReports;
+
+        }else if(nameOfPlace.toLowerCase().equals(Finals.BEER_GARDEN.toLowerCase())){
+            myReports = WaitingActivity.beerGardensReports;
         }
     }
 

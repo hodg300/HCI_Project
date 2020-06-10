@@ -22,11 +22,13 @@ public class MinistryOfHealthSideMenuActivity extends Activity {
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
     private RelativeLayout ministryOfHealthSideMenuActivity;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ministry_of_health_side_menu);
+        activity = this;
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         setIds();
         setDetails();
@@ -122,7 +124,8 @@ public class MinistryOfHealthSideMenuActivity extends Activity {
     private void goToLoginActivity(){
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
-        finish();
+        Util.finishAllActivities();
+
     }
     private void setIds() {
         allReports = findViewById(R.id.all_reports_title);

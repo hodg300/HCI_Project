@@ -22,12 +22,14 @@ public class VisitorSideMenuActivity extends Activity {
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
     private RelativeLayout visitorSideMenuWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_side_menu);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setDetails();
         setOnClickListeners();
@@ -117,7 +119,7 @@ public class VisitorSideMenuActivity extends Activity {
     private void goToLoginActivity(){
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
-        finish();
+        Util.finishAllActivities();
     }
     private void setIds() {
         myInvitations = findViewById(R.id.my_invitations_title);

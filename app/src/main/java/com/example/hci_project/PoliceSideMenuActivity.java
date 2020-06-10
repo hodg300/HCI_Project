@@ -23,12 +23,14 @@ public class PoliceSideMenuActivity extends Activity {
     private de.hdodenhof.circleimageview.CircleImageView image;
     private User user;
     private RelativeLayout policeSideMenuWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_police_side_menu);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setDetails();
         setOnClickListeners();
@@ -122,7 +124,7 @@ public class PoliceSideMenuActivity extends Activity {
     private void goToLoginActivity(){
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
-        finish();
+        Util.finishAllActivities();
     }
     private void setIds() {
 

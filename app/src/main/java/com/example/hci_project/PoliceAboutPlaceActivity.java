@@ -27,6 +27,7 @@ public class PoliceAboutPlaceActivity extends Activity {
     private ImageView menu;
     private User user;
     private RelativeLayout policeAboutPlaceWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class PoliceAboutPlaceActivity extends Activity {
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
         setIds();
+        activity = this;
         setTextOnViews();
         setOnClickListeners();
     }

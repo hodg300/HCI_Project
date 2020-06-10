@@ -15,12 +15,14 @@ public class HealthStatementFormActivity extends Activity {
     CheckBox approveCheckBox;
     Invitation invitation;
     Button acceptBtn;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_statement_form);
         invitation = (Invitation) getIntent().getSerializableExtra(Finals.INVITATION);
+        activity = this;
         setIds();
         setOnClickListeneres();
     }

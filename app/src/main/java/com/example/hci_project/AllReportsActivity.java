@@ -24,6 +24,7 @@ public class AllReportsActivity extends Activity {
     private String nameOfPlace;
     private User user;
     private RelativeLayout allReportsWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class AllReportsActivity extends Activity {
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         nameOfPlace = getIntent().getStringExtra(Finals.NAME_OF_PLACE);
         dynamicXML = new DynamicXML();
+        activity = this;
         setContentView(R.layout.activity_all_reports);
         setIds();
         setOnClickListeners();
@@ -72,21 +74,21 @@ public class AllReportsActivity extends Activity {
 
         reportsHolder.removeAllViews();
 
-        if(SearchActivity.allReports.size() == 0){
+        if(WaitingActivity.allReports.size() == 0){
             TextView noResultTV = dynamicXML.createTextView(this,"You don't have any reports yet.","sans-serif-condensed",
                     13, Color.BLACK, Gravity.CENTER_HORIZONTAL,0,50,0,0);
             reportsHolder.addView(noResultTV);
             return;
         }
 
-        for(Report report : SearchActivity.allReports){
+        for(Report report : WaitingActivity.allReports){
 
             ReportView reportView = new ReportView(
                     this,
                     dynamicXML.createTextView(this,report.getNameOfPlace(),"sans-serif-condensed",20,Color.BLACK,Gravity.TOP,0,0,0,0),
                     dynamicXML.createImageView(this,report.getImage(),Gravity.CENTER,0,5,0,5,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT),
                     dynamicXML.createTextView(this,report.getReporter(),"sans-serif-condensed",15,Color.BLACK,Gravity.CENTER,0,0,0,0),reportsHolder,
-                    SearchActivity.allReports,report,user
+                    WaitingActivity.allReports,report,user
             );
 
             reportsHolder.addView(reportView.getCard());

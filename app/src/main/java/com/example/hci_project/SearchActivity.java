@@ -29,25 +29,22 @@ public class SearchActivity extends Activity {
     private EditText searchEditText;
     private ArrayList<Place> searchedPlaces = new ArrayList<>();
     private ArrayList<PlaceView> placesView = new ArrayList<>();
-    public static ArrayList<Report> allReports = new ArrayList<>();
-    public static ArrayList<Report> susuAndSonsReports = new ArrayList<>();
-    public static ArrayList<Report> telAvivMusiumReports = new ArrayList<>();
-    public static ArrayList<Report> segevExpressReports = new ArrayList<>();
-    public static ArrayList<Report> ahoogHatsfoniReports = new ArrayList<>();
+
     private LinearLayout placesHolder;
     private DynamicXML dynamicXML = new DynamicXML();
     private Map<LinearLayout,Place> linearToPlaceMap;
     private ImageView menu;
     private User user;
     private RelativeLayout searchWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         setContentView(R.layout.activity_search);
-        createReports();
         linearToPlaceMap = new HashMap<>();
+        activity = this;
         setIds();
         setOnClickListeners();
         searchPlaces("");
@@ -60,39 +57,7 @@ public class SearchActivity extends Activity {
         Util.changeBackgroundColor(searchWindow);
     }
 
-    private void createReports() {
 
-        susuAndSonsReports.add(new Report(
-                "Officer Azzulay",
-                "20/2/20",
-                "20/2/20/ \nPlace is crowded with more tham the maximum",
-                Finals.SUSU_AND_SONS,
-                R.drawable.susu_and_sons_img)
-        );
-
-        segevExpressReports.add(new Report(
-                "Officer Shimon",
-                "25/4/20",
-                "25/4/20/ \nSecond strike of this place. shut down immediately",
-                Finals.SEGEV_EXPRESS,
-                R.drawable.segev_express_img)
-        );
-
-        ahoogHatsfoniReports.add(new Report(
-                "Officer Yoni",
-                "4/6/20",
-                "4/6/20/ \nNot good.",
-                Finals.AHOOG_HATSFONI,
-                R.drawable.ahug_hatsfoni_img)
-        );
-
-        allReports.addAll(segevExpressReports);
-        allReports.addAll(susuAndSonsReports);
-        allReports.addAll(ahoogHatsfoniReports);
-
-
-
-    }
 
     private void setOnClickListeners() {
         searchEditText.addTextChangedListener(new TextWatcher() {

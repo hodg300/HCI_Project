@@ -25,6 +25,7 @@ public class MyReportsActivity extends Activity {
     private String nameOfPlace;
     private RelativeLayout myReportWindow;
     private User user;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MyReportsActivity extends Activity {
         nameOfPlace = getIntent().getStringExtra(Finals.NAME_OF_PLACE);
         dynamicXML = new DynamicXML();
         setContentView(R.layout.activity_my_reports);
+        activity  = this;
         setIds();
         setOnClickListeners();
         showPlaces();
@@ -73,14 +75,14 @@ public class MyReportsActivity extends Activity {
 
         reportsHolder.removeAllViews();
 
-        if(SearchActivity.allReports.size() == 0){
+        if(WaitingActivity.allReports.size() == 0){
             TextView noResultTV = dynamicXML.createTextView(this,"You don't have any reports yet.","sans-serif-condensed",
                     13, Color.BLACK, Gravity.CENTER_HORIZONTAL,0,50,0,0);
             reportsHolder.addView(noResultTV);
             return;
         }
 
-        for(Report report : SearchActivity.allReports){
+        for(Report report : WaitingActivity.allReports){
 
             Log.d("BABA", report.getReporter().toLowerCase());
             Log.d("BABA",  user.firstName + user.lastName);
@@ -93,7 +95,7 @@ public class MyReportsActivity extends Activity {
                         dynamicXML.createTextView(this, report.getNameOfPlace(), "sans-serif-condensed", 20, Color.BLACK, Gravity.TOP, 0, 0, 0, 0),
                         dynamicXML.createImageView(this, report.getImage(), Gravity.CENTER, 0, 5, 0, 5, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT),
                         dynamicXML.createTextView(this, report.getReporter(), "sans-serif-condensed", 15, Color.BLACK, Gravity.CENTER, 0, 0, 0, 0), reportsHolder,
-                        SearchActivity.allReports, report, user
+                        WaitingActivity.allReports, report, user
                 );
 
 

@@ -2,6 +2,7 @@ package com.example.hci_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -35,6 +36,7 @@ public class UpdateVisitorsActivity extends AppCompatActivity implements DatePic
    private Calendar calendar = Calendar.getInstance();
    private int numOfVisitors;
    private int maxNumOfVisitors;
+   public static Activity activity;
    private User user;
    private boolean dateHasBeenSet = false;
    private boolean timeHasBeenSet = false;
@@ -46,7 +48,7 @@ public class UpdateVisitorsActivity extends AppCompatActivity implements DatePic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_visitors);
 
-
+        activity = this;
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         setIds();
         setOnClickListeners();

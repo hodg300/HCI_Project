@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -36,6 +37,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
     private TextView openHour;
     private TextView cuisines;
     private RelativeLayout ministryOfHealthAboutPlaceWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class MinistryOfHealthAboutPlaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ministry_of_health_about_place);
         place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE_INDEX,0));
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         dynamicXML = new DynamicXML();
         setIds();
         setOnClickListeners();

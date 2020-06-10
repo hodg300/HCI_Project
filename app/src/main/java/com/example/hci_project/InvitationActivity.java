@@ -32,6 +32,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
     private int placeIndex;
     private RelativeLayout invitationWindow;
     private Invitation invitation;
+    public static Activity activity;
 
 
     @Override
@@ -40,6 +41,7 @@ public class InvitationActivity extends Activity  implements DatePickerDialog.On
         setContentView(R.layout.activity_invitation);
         placeIndex = getIntent().getIntExtra(Finals.PLACE_INDEX,0);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setInfo();
         setOnClickListeners();

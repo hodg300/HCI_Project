@@ -21,6 +21,7 @@ public class FillReportActivity extends Activity {
     private ImageView menu;
     private RelativeLayout fillReportWindow;
     private User user;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class FillReportActivity extends Activity {
         setContentView(R.layout.activity_fill_report);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         place = WaitingActivity.places.get(getIntent().getIntExtra(Finals.PLACE,0));
+        activity = this;
         setIds();
         setOnClickListeners();
     }

@@ -17,12 +17,14 @@ public class PersonalInfoActivity extends Activity {
     private User user;
     private Button submitBtn;
     private RelativeLayout personalInfoWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setIds();
         setOnClickListeners();
     }

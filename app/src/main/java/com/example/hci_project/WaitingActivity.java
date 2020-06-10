@@ -16,17 +16,31 @@ public class WaitingActivity extends Activity {
     private ProgressBar progressBar;
     private User user;
     public static ArrayList<Place> places = new ArrayList<>();
+    public static ArrayList<Report> allReports = new ArrayList<>();
+    public static ArrayList<Report> susuAndSonsReports = new ArrayList<>();
+    public static ArrayList<Report> telAvivMusiumReports = new ArrayList<>();
+    public static ArrayList<Report> segevExpressReports = new ArrayList<>();
+    public static ArrayList<Report> ahoogHatsfoniReports = new ArrayList<>();
+    public static ArrayList<Report> mosesReports = new ArrayList<>();
+    public static ArrayList<Report> beerGardensReports = new ArrayList<>();
+    public static ArrayList<Report> alHayamReports = new ArrayList<>();
+    public static ArrayList<Report> naginasReports = new ArrayList<>();
     public static boolean isDarkModeOn = false;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting);
         user = (User) getIntent().getSerializableExtra(Finals.USER);
+        activity = this;
         setId();
         createLocations();
+        createReports();
         delay(1);
     }
+
+
 
     private void setId() {
         progressBar = findViewById(R.id.progress_bar);
@@ -128,6 +142,37 @@ public class WaitingActivity extends Activity {
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                 new LatLng(32.093697,34.8248839),100,true,100,
                 "16:00 - 3:00" ,"Japanese Kitchen",7));
+    }
+
+    private void createReports() {
+
+        susuAndSonsReports.add(new Report(
+                "Officer Azzulay",
+                "20/2/20",
+                "20/2/20/ \nPlace is crowded with more tham the maximum",
+                Finals.SUSU_AND_SONS,
+                R.drawable.susu_and_sons_img)
+        );
+
+        segevExpressReports.add(new Report(
+                "Officer Shimon",
+                "25/4/20",
+                "25/4/20/ \nSecond strike of this place. shut down immediately",
+                Finals.SEGEV_EXPRESS,
+                R.drawable.segev_express_img)
+        );
+
+        ahoogHatsfoniReports.add(new Report(
+                "Officer Yoni",
+                "4/6/20",
+                "4/6/20/ \nNot good.",
+                Finals.AHOOG_HATSFONI,
+                R.drawable.ahug_hatsfoni_img)
+        );
+
+        allReports.addAll(segevExpressReports);
+        allReports.addAll(susuAndSonsReports);
+        allReports.addAll(ahoogHatsfoniReports);
 
 
 

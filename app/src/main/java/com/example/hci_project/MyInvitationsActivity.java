@@ -23,6 +23,7 @@ public class MyInvitationsActivity extends Activity {
     private DynamicXML dynamicXML;
     private User user;
     private RelativeLayout myInvitationWindow;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MyInvitationsActivity extends Activity {
         user = (User) getIntent().getSerializableExtra(Finals.USER);
         dynamicXML = new DynamicXML();
         setContentView(R.layout.activity_my_invitations);
+        activity = this;
         setIds();
         setOnClickListeners();
         showPlaces();
